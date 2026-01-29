@@ -16,6 +16,11 @@ public class PrefabSwitchList : MonoBehaviour
     [Header("Optional parent to deactivate on click")]
     [SerializeField] private GameObject parentToDeactivate;
 
+    [Header("Hover alpha effect")]
+    [SerializeField] private bool enableHoverAlpha = true;
+    [SerializeField, Range(0f, 1f)] private float hoverOnAlpha = 1f;
+    [SerializeField, Range(0f, 1f)] private float hoverOffAlpha = 0f;
+
     private GameSettings gameSettings;
 
     private void Awake()
@@ -35,6 +40,17 @@ public class PrefabSwitchList : MonoBehaviour
             if (button == null)
             {
                 continue;
+            }
+
+            if (enableHoverAlpha)
+            {
+                ButtonHoverAlpha hover = button.GetComponent<ButtonHoverAlpha>();
+                if (hover == null)
+                {
+                    hover = button.gameObject.AddComponent<ButtonHoverAlpha>();
+                }
+
+                hover.Configure(hoverOnAlpha, hoverOffAlpha);
             }
 
             button.onClick.AddListener(() => ActivateTarget(target));

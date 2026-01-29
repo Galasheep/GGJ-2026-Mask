@@ -289,6 +289,9 @@ MonoBehaviour:
   - button: {fileID: 1979323728}
     target: {fileID: 287094728}
   parentToDeactivate: {fileID: 284406438}
+  enableHoverAlpha: 1
+  hoverOnAlpha: 1
+  hoverOffAlpha: 0
 --- !u!1 &287094728
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,8 +324,8 @@ RectTransform:
   m_Children:
   - {fileID: 393883798}
   - {fileID: 378003011}
-  - {fileID: 1824955653}
   - {fileID: 358374387}
+  - {fileID: 1824955653}
   - {fileID: 1128036124}
   m_Father: {fileID: 95310754}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -354,9 +357,16 @@ MonoBehaviour:
   buttons:
   - button: {fileID: 378003012}
     target: {fileID: 284406438}
-  - button: {fileID: 1824955654}
+  - button: {fileID: 358374388}
     target: {fileID: 656997355}
+  - button: {fileID: 1824955654}
+    target: {fileID: 0}
+  - button: {fileID: 1128036125}
+    target: {fileID: 0}
   parentToDeactivate: {fileID: 287094728}
+  enableHoverAlpha: 1
+  hoverOnAlpha: 1
+  hoverOffAlpha: 0
 --- !u!1 &358374386
 GameObject:
   m_ObjectHideFlags: 0
@@ -992,6 +1002,9 @@ MonoBehaviour:
   - button: {fileID: 1774895218}
     target: {fileID: 287094728}
   parentToDeactivate: {fileID: 656997355}
+  enableHoverAlpha: 1
+  hoverOnAlpha: 1
+  hoverOffAlpha: 0
 --- !u!1 &705760854
 GameObject:
   m_ObjectHideFlags: 0
