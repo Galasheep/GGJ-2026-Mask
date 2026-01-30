@@ -21,6 +21,13 @@ public class maskfeature : MonoBehaviour
     [SerializeField] private bool disableRootOnIn = true;
     [SerializeField] private float inDisableDelay = 0.0f;
 
+    [Header("Mask feature fade/zoom")]
+    [SerializeField] private CanvasGroup rootCanvasGroup;
+    [SerializeField] private RectTransform rootRectTransform;
+    [SerializeField] private float fadeDuration = 0.15f;
+    [SerializeField] private float zoomDuration = 0.15f;
+    [SerializeField] private float zoomFromScale = 1.1f;
+
     [Header("Optional default state")]
     [SerializeField] private bool startEnabled = false;
 
@@ -28,6 +35,7 @@ public class maskfeature : MonoBehaviour
     private int lastMaskIndex = -1;
     private bool buttonsHooked;
     private Coroutine disableRoutine;
+    private Coroutine fadeRoutine;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
     private static void InitializeAll()
@@ -62,6 +70,16 @@ public class maskfeature : MonoBehaviour
             rootToToggle = gameObject;
         }
 
+        if (rootCanvasGroup == null && rootToToggle != null)
+        {
+            rootCanvasGroup = rootToToggle.GetComponentInChildren<CanvasGroup>(true);
+        }
+
+        if (rootRectTransform == null && rootToToggle != null)
+        {
+            rootRectTransform = rootToToggle.GetComponentInChildren<RectTransform>(true);
+        }
+
         if (!buttonsHooked)
         {
             if (onButton != null)
@@ -78,6 +96,10 @@ public class maskfeature : MonoBehaviour
         }
 
         SetActive(startEnabled);
+        if (startEnabled)
+        {
+            ApplyFade(1f, 1f);
+        }
     }
 
     public void ApplyAssets(MaskUiAssetList list, int maskIndex)
@@ -141,6 +163,7 @@ public class maskfeature : MonoBehaviour
 
         SetActive(true);
         CancelDisable();
+        StartFadeZoomIn();
         if (!string.IsNullOrEmpty(inTrigger))
         {
             inventoryAnimator.ResetTrigger(inTrigger);
@@ -175,6 +198,8 @@ public class maskfeature : MonoBehaviour
             CancelDisable();
             disableRoutine = StartCoroutine(DisableAfterDelay(inDisableDelay));
         }
+
+        StartFadeZoomOut();
     }
 
     private void CancelDisable()
@@ -183,6 +208,77 @@ public class maskfeature : MonoBehaviour
         {
             StopCoroutine(disableRoutine);
             disableRoutine = null;
+        }
+    }
+
+    private void StartFadeZoomIn()
+    {
+        if (rootCanvasGroup == null && rootRectTransform == null)
+        {
+            return;
+        }
+
+        StartFadeRoutine(0f, 1f, zoomFromScale, 1f);
+    }
+
+    private void StartFadeZoomOut()
+    {
+        if (rootCanvasGroup == null && rootRectTransform == null)
+        {
+            return;
+        }
+
+        StartFadeRoutine(1f, 0f, 1f, 0.98f);
+    }
+
+    private void StartFadeRoutine(float fromAlpha, float toAlpha, float fromScale, float toScale)
+    {
+        if (fadeRoutine != null)
+        {
+            StopCoroutine(fadeRoutine);
+        }
+
+        fadeRoutine = StartCoroutine(FadeZoomRoutine(fromAlpha, toAlpha, fromScale, toScale));
+    }
+
+    private System.Collections.IEnumerator FadeZoomRoutine(float fromAlpha, float toAlpha, float fromScale, float toScale)
+    {
+        ApplyFade(fromAlpha, fromScale);
+
+        float duration = Mathf.Max(fadeDuration, zoomDuration);
+        if (duration <= 0f)
+        {
+            ApplyFade(toAlpha, toScale);
+            fadeRoutine = null;
+            yield break;
+        }
+
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
+
+            float alpha = Mathf.Lerp(fromAlpha, toAlpha, Mathf.Clamp01(elapsed / Mathf.Max(0.0001f, fadeDuration)));
+            float scale = Mathf.Lerp(fromScale, toScale, Mathf.Clamp01(elapsed / Mathf.Max(0.0001f, zoomDuration)));
+            ApplyFade(alpha, scale);
+            yield return null;
+        }
+
+        ApplyFade(toAlpha, toScale);
+        fadeRoutine = null;
+    }
+
+    private void ApplyFade(float alpha, float scale)
+    {
+        if (rootCanvasGroup != null)
+        {
+            rootCanvasGroup.alpha = alpha;
+        }
+
+        if (rootRectTransform != null)
+        {
+            rootRectTransform.localScale = Vector3.one * scale;
         }
     }
 
