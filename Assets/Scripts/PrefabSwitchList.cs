@@ -126,7 +126,6 @@ public class PrefabSwitchList : MonoBehaviour
             }
 
             feature.ApplyAssets(listToUse, buttonIndex);
-            feature.TriggerOut();
         }
 
         if (parentToDeactivate != null)
