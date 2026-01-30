@@ -14,12 +14,20 @@ public class maskfeature : MonoBehaviour
     [SerializeField] private Button onButton;
     [SerializeField] private Button offButton;
 
+    [Header("Optional inventory animation")]
+    [SerializeField] private Animator inventoryAnimator;
+    [SerializeField] private string outTrigger = "Out";
+    [SerializeField] private string inTrigger = "In";
+    [SerializeField] private bool disableRootOnIn = true;
+    [SerializeField] private float inDisableDelay = 0.0f;
+
     [Header("Optional default state")]
     [SerializeField] private bool startEnabled = false;
 
     private MaskUiAssetList lastList;
     private int lastMaskIndex = -1;
     private bool buttonsHooked;
+    private Coroutine disableRoutine;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
     private static void InitializeAll()
@@ -104,13 +112,13 @@ public class maskfeature : MonoBehaviour
 
     public void TurnOn()
     {
-        SetActive(true);
+        TriggerOut();
         ApplyCached();
     }
 
     public void TurnOff()
     {
-        SetActive(false);
+        TriggerIn();
     }
 
     public void SetActive(bool active)
@@ -122,6 +130,71 @@ public class maskfeature : MonoBehaviour
         }
 
         gameObject.SetActive(active);
+    }
+
+    public void TriggerOut()
+    {
+        if (inventoryAnimator == null)
+        {
+            return;
+        }
+
+        SetActive(true);
+        CancelDisable();
+        if (!string.IsNullOrEmpty(inTrigger))
+        {
+            inventoryAnimator.ResetTrigger(inTrigger);
+        }
+
+        if (!string.IsNullOrEmpty(outTrigger))
+        {
+            inventoryAnimator.SetTrigger(outTrigger);
+        }
+    }
+
+    public void TriggerIn()
+    {
+        if (inventoryAnimator == null)
+        {
+            SetActive(false);
+            return;
+        }
+
+        if (!string.IsNullOrEmpty(outTrigger))
+        {
+            inventoryAnimator.ResetTrigger(outTrigger);
+        }
+
+        if (!string.IsNullOrEmpty(inTrigger))
+        {
+            inventoryAnimator.SetTrigger(inTrigger);
+        }
+
+        if (disableRootOnIn)
+        {
+            CancelDisable();
+            disableRoutine = StartCoroutine(DisableAfterDelay(inDisableDelay));
+        }
+    }
+
+    private void CancelDisable()
+    {
+        if (disableRoutine != null)
+        {
+            StopCoroutine(disableRoutine);
+            disableRoutine = null;
+        }
+    }
+
+    private System.Collections.IEnumerator DisableAfterDelay(float delay)
+    {
+        if (delay > 0f)
+        {
+            yield return new WaitForSeconds(delay);
+        }
+
+        SetActive(false);
+        disableRoutine = null;
     }
 
     private void ApplyCached()

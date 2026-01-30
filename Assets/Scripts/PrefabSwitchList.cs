@@ -28,12 +28,14 @@ public class PrefabSwitchList : MonoBehaviour
     [SerializeField, Range(0f, 1f)] private float hoverOffAlpha = 0f;
 
     private GameSettings gameSettings;
+    private maskfeature cachedMaskFeature;
 
     private void OnEnable()
     {
-        if (maskFeature != null)
+        maskfeature feature = ResolveMaskFeature();
+        if (feature != null)
         {
-            maskFeature.ApplyList(uiAssets);
+            feature.ApplyList(uiAssets);
         }
     }
 
@@ -106,7 +108,8 @@ public class PrefabSwitchList : MonoBehaviour
             target.SetActive(true);
         }
 
-        if (maskFeature != null)
+        maskfeature feature = ResolveMaskFeature();
+        if (feature != null)
         {
             MaskUiAssetList listToUse = uiAssets;
             if (target != null)
@@ -122,12 +125,47 @@ public class PrefabSwitchList : MonoBehaviour
                 }
             }
 
-            maskFeature.ApplyAssets(listToUse, buttonIndex);
+            feature.ApplyAssets(listToUse, buttonIndex);
+            feature.TriggerOut();
         }
 
         if (parentToDeactivate != null)
         {
             parentToDeactivate.SetActive(false);
         }
+    }
+
+    private maskfeature ResolveMaskFeature()
+    {
+        if (maskFeature != null)
+        {
+            cachedMaskFeature = maskFeature;
+            return maskFeature;
+        }
+
+        if (cachedMaskFeature != null)
+        {
+            return cachedMaskFeature;
+        }
+
+        maskfeature[] allFeatures = Resources.FindObjectsOfTypeAll<maskfeature>();
+        for (int i = 0; i < allFeatures.Length; i++)
+        {
+            maskfeature feature = allFeatures[i];
+            if (feature == null)
+            {
+                continue;
+            }
+
+            if (!feature.gameObject.scene.IsValid())
+            {
+                continue;
+            }
+
+            cachedMaskFeature = feature;
+            return feature;
+        }
+
+        return null;
     }
 }
