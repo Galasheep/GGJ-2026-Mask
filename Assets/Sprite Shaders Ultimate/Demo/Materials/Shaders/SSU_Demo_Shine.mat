@@ -13,6 +13,7 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - ETC1_EXTERNAL_ALPHA
+  - _ENABLEGLITCH_ON
   - _ENABLESHINE_ON
   - _SHADERFADING_NONE
   - _SHADERSPACE_UV
@@ -239,7 +240,7 @@ Material:
     - _EnableFullDistortion: 0
     - _EnableFullGlowDissolve: 0
     - _EnableGaussianBlur: 0
-    - _EnableGlitch: 0
+    - _EnableGlitch: 1
     - _EnableHalftone: 0
     - _EnableHologram: 0
     - _EnableHue: 0
@@ -316,7 +317,7 @@ Material:
     - _GaussianBlurFade: 1
     - _GaussianBlurOffset: 1
     - _GlitchBrightness: 4
-    - _GlitchFade: 1
+    - _GlitchFade: 0.1
     - _GlitchHueSpeed: 1
     - _GlitchMaskMin: 0.4
     - _GlossMapScale: 1
@@ -365,6 +366,7 @@ Material:
     - _PingPongGlowContrast: 1
     - _PingPongGlowFade: 1
     - _PingPongGlowFrequency: 3
+    - _PixelOutlineAlphaLimit: 0.5
     - _PixelOutlineFade: 1
     - _PixelOutlineOutlineOnlyToggle: 0
     - _PixelOutlineTextureToggle: 0
@@ -664,3 +666,4 @@ Material:
     - _WorldTilingOffset: {r: 0, g: 0, b: 0, a: 0}
     - _WorldTilingScale: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1
