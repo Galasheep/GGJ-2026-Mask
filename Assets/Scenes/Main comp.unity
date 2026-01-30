@@ -2117,6 +2117,7 @@ GameObject:
   - component: {fileID: 1006269108}
   - component: {fileID: 1006269107}
   - component: {fileID: 1006269109}
+  - component: {fileID: 1006269110}
   m_Layer: 0
   m_Name: Game settings
   m_TagString: Untagged
@@ -2181,6 +2182,26 @@ MonoBehaviour:
   zoomDuration: 0.2
   zoomFromScale: 0.5
   startEnabled: 0
+--- !u!114 &1006269110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1006269106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7b40b0b4b6a4b24ebe8648a3ed6cd5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameMenuUI
+  menuRoot: {fileID: 1281240053}
+  playButton: {fileID: 1511658516}
+  activateOnStart: 1
+  fadeOnStart: 0
+  fadeOnPlay: 1
+  onPlay:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1124161109
 GameObject:
   m_ObjectHideFlags: 0
@@ -2731,6 +2752,7 @@ GameObject:
   - component: {fileID: 1281240054}
   - component: {fileID: 1281240056}
   - component: {fileID: 1281240055}
+  - component: {fileID: 1281240057}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -2799,6 +2821,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1281240053}
   m_CullTransparentMesh: 1
+--- !u!225 &1281240057
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281240053}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1419850995
 GameObject:
   m_ObjectHideFlags: 0
