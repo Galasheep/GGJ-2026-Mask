@@ -20,6 +20,13 @@ public class PrefabSwitchList : MonoBehaviour
     [Header("Buttons mapped to their target prefabs")]
     [SerializeField] private ButtonTarget[] buttons;
 
+    [Header("Riddle button sequence")]
+    [SerializeField] private Button[] riddleButtons;
+    [SerializeField] private int[] riddleOrder;
+    [SerializeField] private GameObject riddleTarget;
+    [SerializeField] private bool resetRiddleOnWrong = true;
+    [SerializeField] private bool disableRiddleButtonsOnSuccess = true;
+
     [Header("Optional parent to deactivate on click")]
     [SerializeField] private GameObject parentToDeactivate;
 
@@ -30,9 +37,12 @@ public class PrefabSwitchList : MonoBehaviour
 
     private GameSettings gameSettings;
     private maskfeature cachedMaskFeature;
+    private int riddleProgress;
 
     private void OnEnable()
     {
+        ResetRiddleProgress();
+
         maskfeature feature = ResolveMaskFeature();
         if (feature != null)
         {
@@ -78,6 +88,33 @@ public class PrefabSwitchList : MonoBehaviour
 
             button.onClick.AddListener(() => ActivateTarget(target, buttonIndex));
         }
+
+        if (riddleButtons != null)
+        {
+            for (int i = 0; i < riddleButtons.Length; i++)
+            {
+                Button button = riddleButtons[i];
+                int buttonIndex = i;
+
+                if (button == null)
+                {
+                    continue;
+                }
+
+                if (enableHoverAlpha)
+                {
+                    ButtonHoverAlpha hover = button.GetComponent<ButtonHoverAlpha>();
+                    if (hover == null)
+                    {
+                        hover = button.gameObject.AddComponent<ButtonHoverAlpha>();
+                    }
+
+                    hover.Configure(hoverOnAlpha, hoverOffAlpha);
+                }
+
+                button.onClick.AddListener(() => HandleRiddlePress(buttonIndex));
+            }
+        }
     }
 
     private void ActivateTarget(GameObject target, int buttonIndex)
@@ -89,6 +126,68 @@ public class PrefabSwitchList : MonoBehaviour
         }
 
         SwitchNow(target, buttonIndex);
+    }
+
+    private void HandleRiddlePress(int buttonIndex)
+    {
+        if (riddleButtons == null || riddleOrder == null || riddleOrder.Length == 0)
+        {
+            return;
+        }
+
+        if (riddleProgress < 0 || riddleProgress >= riddleOrder.Length)
+        {
+            ResetRiddleProgress();
+        }
+
+        int expectedIndex = riddleOrder[riddleProgress];
+        if (buttonIndex == expectedIndex)
+        {
+            riddleProgress++;
+            if (riddleProgress >= riddleOrder.Length)
+            {
+                ActivateRiddleTarget();
+            }
+        }
+        else if (resetRiddleOnWrong)
+        {
+            ResetRiddleProgress();
+        }
+    }
+
+    private void ActivateRiddleTarget()
+    {
+        if (gameSettings != null)
+        {
+            gameSettings.FadeAndSwitch(ActivateRiddleNow);
+            return;
+        }
+
+        ActivateRiddleNow();
+    }
+
+    private void ActivateRiddleNow()
+    {
+        if (riddleTarget != null)
+        {
+            riddleTarget.SetActive(true);
+        }
+
+        if (disableRiddleButtonsOnSuccess && riddleButtons != null)
+        {
+            for (int i = 0; i < riddleButtons.Length; i++)
+            {
+                if (riddleButtons[i] != null)
+                {
+                    riddleButtons[i].interactable = false;
+                }
+            }
+        }
+
+        if (parentToDeactivate != null)
+        {
+            parentToDeactivate.SetActive(false);
+        }
     }
 
     private void SwitchNow(GameObject target, int buttonIndex)
@@ -176,5 +275,20 @@ public class PrefabSwitchList : MonoBehaviour
         }
 
         return null;
+    }
+
+    private void ResetRiddleProgress()
+    {
+        riddleProgress = 0;
+        if (riddleButtons != null)
+        {
+            for (int i = 0; i < riddleButtons.Length; i++)
+            {
+                if (riddleButtons[i] != null)
+                {
+                    riddleButtons[i].interactable = true;
+                }
+            }
+        }
     }
 }
