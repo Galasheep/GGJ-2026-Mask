@@ -74,8 +74,13 @@ public class maskfeature : MonoBehaviour
 
     public void ApplyAssets(MaskUiAssetList list, int maskIndex)
     {
-        lastList = list;
         lastMaskIndex = maskIndex;
+        ApplyList(list);
+    }
+
+    public void ApplyList(MaskUiAssetList list)
+    {
+        lastList = list;
 
         if (list == null)
         {
@@ -87,9 +92,9 @@ public class maskfeature : MonoBehaviour
             bgImage.sprite = list.BG;
         }
 
-        if (maskImage != null)
+        if (maskImage != null && lastMaskIndex >= 0)
         {
-            Sprite maskSprite = GetMaskSprite(list, maskIndex);
+            Sprite maskSprite = GetMaskSprite(list, lastMaskIndex);
             if (maskSprite != null)
             {
                 maskImage.sprite = maskSprite;

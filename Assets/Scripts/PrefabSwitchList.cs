@@ -29,6 +29,19 @@ public class PrefabSwitchList : MonoBehaviour
 
     private GameSettings gameSettings;
 
+    private void OnEnable()
+    {
+        if (maskFeature != null)
+        {
+            maskFeature.ApplyList(uiAssets);
+        }
+    }
+
+    public MaskUiAssetList GetUiAssets()
+    {
+        return uiAssets;
+    }
+
     private void Awake()
     {
         gameSettings = FindFirstObjectByType<GameSettings>();
@@ -95,7 +108,21 @@ public class PrefabSwitchList : MonoBehaviour
 
         if (maskFeature != null)
         {
-            maskFeature.ApplyAssets(uiAssets, buttonIndex);
+            MaskUiAssetList listToUse = uiAssets;
+            if (target != null)
+            {
+                PrefabSwitchList targetList = target.GetComponentInChildren<PrefabSwitchList>(true);
+                if (targetList != null && targetList != this)
+                {
+                    MaskUiAssetList targetAssets = targetList.GetUiAssets();
+                    if (targetAssets != null)
+                    {
+                        listToUse = targetAssets;
+                    }
+                }
+            }
+
+            maskFeature.ApplyAssets(listToUse, buttonIndex);
         }
 
         if (parentToDeactivate != null)
