@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cbd5e88e0dd315d46a13a348d29d38e6, type: 3}
-  m_Name: Room 1 library MaskUiAssetList clock
+  m_Name: Room 1 library window
   m_EditorClassIdentifier: Assembly-CSharp::MaskUiAssetList
-  BG: {fileID: 21300000, guid: e5d74469198852f4c97ca200653fd6a5, type: 3}
+  BG: {fileID: 21300000, guid: 5af9a397a8643994c829e696a24a7845, type: 3}
   Masks:
-  - {fileID: 21300000, guid: 3ef7793c3bd921c4a8ff54156616314f, type: 3}
+  - {fileID: 21300000, guid: db5cc6d99e6afeb4e9eb55462e6a6794, type: 3}

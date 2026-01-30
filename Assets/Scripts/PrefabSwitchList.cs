@@ -14,6 +14,7 @@ public class PrefabSwitchList : MonoBehaviour
     {
         public Button button;
         public GameObject target;
+        public MaskUiAssetList uiAssetsOverride;
     }
 
     [Header("Buttons mapped to their target prefabs")]
@@ -122,6 +123,15 @@ public class PrefabSwitchList : MonoBehaviour
                     {
                         listToUse = targetAssets;
                     }
+                }
+            }
+
+            if (buttons != null && buttonIndex >= 0 && buttonIndex < buttons.Length)
+            {
+                MaskUiAssetList overrideAssets = buttons[buttonIndex].uiAssetsOverride;
+                if (overrideAssets != null)
+                {
+                    listToUse = overrideAssets;
                 }
             }
 

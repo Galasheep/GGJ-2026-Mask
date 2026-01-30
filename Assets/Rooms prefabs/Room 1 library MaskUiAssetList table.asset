@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MaskUiAssetList
   BG: {fileID: 21300000, guid: 8e46980b61bd4b749ada1541a8492162, type: 3}
   Masks:
-  - {fileID: 3261642072001297350, guid: db5cc6d99e6afeb4e9eb55462e6a6794, type: 3}
+  - {fileID: 21300000, guid: db5cc6d99e6afeb4e9eb55462e6a6794, type: 3}
