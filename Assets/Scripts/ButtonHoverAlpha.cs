@@ -7,16 +7,34 @@ public class ButtonHoverAlpha : MonoBehaviour, IPointerEnterHandler, IPointerExi
     [SerializeField] private Graphic targetGraphic;
     [SerializeField, Range(0f, 1f)] private float hoverOnAlpha = 1f;
     [SerializeField, Range(0f, 1f)] private float hoverOffAlpha = 0f;
+    private Button cachedButton;
 
     private void Awake()
     {
         if (targetGraphic == null)
         {
-            Button button = GetComponent<Button>();
-            targetGraphic = button != null ? button.targetGraphic : GetComponent<Graphic>();
+            cachedButton = GetComponent<Button>();
+            targetGraphic = cachedButton != null ? cachedButton.targetGraphic : GetComponent<Graphic>();
+        }
+        else
+        {
+            cachedButton = GetComponent<Button>();
         }
 
         SetAlpha(hoverOffAlpha);
+
+        if (cachedButton != null)
+        {
+            cachedButton.onClick.AddListener(HandleClick);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (cachedButton != null)
+        {
+            cachedButton.onClick.RemoveListener(HandleClick);
+        }
     }
 
     public void Configure(float onAlpha, float offAlpha)
@@ -32,6 +50,11 @@ public class ButtonHoverAlpha : MonoBehaviour, IPointerEnterHandler, IPointerExi
     }
 
     public void OnPointerExit(PointerEventData eventData)
+    {
+        SetAlpha(hoverOffAlpha);
+    }
+
+    private void HandleClick()
     {
         SetAlpha(hoverOffAlpha);
     }
