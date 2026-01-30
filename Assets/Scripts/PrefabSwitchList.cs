@@ -27,6 +27,9 @@ public class PrefabSwitchList : MonoBehaviour
     [SerializeField] private bool resetRiddleOnWrong = true;
     [SerializeField] private bool disableRiddleButtonsOnSuccess = true;
 
+    [Header("Back button destination (optional override)")]
+    [SerializeField] private GameObject backTargetOverride;
+
     [Header("Optional parent to deactivate on click")]
     [SerializeField] private GameObject parentToDeactivate;
 
@@ -38,15 +41,34 @@ public class PrefabSwitchList : MonoBehaviour
     private GameSettings gameSettings;
     private maskfeature cachedMaskFeature;
     private int riddleProgress;
+    private GameObject currentTarget;
+    private readonly System.Collections.Generic.Stack<GameObject> backHistory =
+        new System.Collections.Generic.Stack<GameObject>();
 
     private void OnEnable()
     {
         ResetRiddleProgress();
+        CacheCurrentTargetFromScene();
+
+        if (gameSettings != null)
+        {
+            gameSettings.SetActiveSwitchList(this);
+            gameSettings.RefreshBackButton();
+        }
 
         maskfeature feature = ResolveMaskFeature();
         if (feature != null)
         {
             feature.ApplyList(uiAssets);
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (gameSettings != null)
+        {
+            gameSettings.ClearActiveSwitchList(this);
+            gameSettings.RefreshBackButton();
         }
     }
 
@@ -121,11 +143,11 @@ public class PrefabSwitchList : MonoBehaviour
     {
         if (gameSettings != null)
         {
-            gameSettings.FadeAndSwitch(() => SwitchNow(target, buttonIndex));
+            gameSettings.FadeAndSwitch(() => SwitchNow(target, buttonIndex, true));
             return;
         }
 
-        SwitchNow(target, buttonIndex);
+        SwitchNow(target, buttonIndex, true);
     }
 
     private void HandleRiddlePress(int buttonIndex)
@@ -190,8 +212,13 @@ public class PrefabSwitchList : MonoBehaviour
         }
     }
 
-    private void SwitchNow(GameObject target, int buttonIndex)
+    private void SwitchNow(GameObject target, int buttonIndex, bool recordHistory)
     {
+        if (recordHistory && currentTarget != null && currentTarget != target)
+        {
+            backHistory.Push(currentTarget);
+        }
+
         if (buttons != null)
         {
             for (int i = 0; i < buttons.Length; i++)
@@ -206,6 +233,12 @@ public class PrefabSwitchList : MonoBehaviour
         if (target != null)
         {
             target.SetActive(true);
+        }
+
+        currentTarget = target;
+        if (gameSettings != null)
+        {
+            gameSettings.RefreshBackButton();
         }
 
         maskfeature feature = ResolveMaskFeature();
@@ -288,6 +321,57 @@ public class PrefabSwitchList : MonoBehaviour
                 {
                     riddleButtons[i].interactable = true;
                 }
+            }
+        }
+    }
+
+    public void GoBack()
+    {
+        GameObject target = backTargetOverride;
+        if (target == null && backHistory.Count > 0)
+        {
+            target = backHistory.Pop();
+        }
+
+        if (target == null)
+        {
+            return;
+        }
+
+        if (gameSettings != null)
+        {
+            gameSettings.FadeAndSwitch(() => SwitchNow(target, -1, false));
+            return;
+        }
+
+        SwitchNow(target, -1, false);
+    }
+
+    public bool CanGoBack()
+    {
+        if (backTargetOverride != null)
+        {
+            return true;
+        }
+
+        return backHistory.Count > 0;
+    }
+
+    private void CacheCurrentTargetFromScene()
+    {
+        currentTarget = null;
+        if (buttons == null)
+        {
+            return;
+        }
+
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            GameObject target = buttons[i].target;
+            if (target != null && target.activeSelf)
+            {
+                currentTarget = target;
+                return;
             }
         }
     }

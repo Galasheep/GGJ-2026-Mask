@@ -1010,6 +1010,7 @@ MonoBehaviour:
   riddleTarget: {fileID: 0}
   resetRiddleOnWrong: 1
   disableRiddleButtonsOnSuccess: 1
+  backTargetOverride: {fileID: 0}
   parentToDeactivate: {fileID: 284406438}
   enableHoverAlpha: 1
   hoverOnAlpha: 1
@@ -1085,6 +1086,7 @@ MonoBehaviour:
   riddleTarget: {fileID: 0}
   resetRiddleOnWrong: 1
   disableRiddleButtonsOnSuccess: 1
+  backTargetOverride: {fileID: 0}
   parentToDeactivate: {fileID: 287094728}
   enableHoverAlpha: 1
   hoverOnAlpha: 1
@@ -2232,6 +2234,7 @@ MonoBehaviour:
   riddleTarget: {fileID: 284406438}
   resetRiddleOnWrong: 1
   disableRiddleButtonsOnSuccess: 1
+  backTargetOverride: {fileID: 0}
   parentToDeactivate: {fileID: 687303100}
   enableHoverAlpha: 1
   hoverOnAlpha: 1
@@ -2919,6 +2922,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   blackLayer: {fileID: 705760854}
   fadeDuration: 0.35
+  backButton: {fileID: 1376326406}
 --- !u!4 &1006269108
 Transform:
   m_ObjectHideFlags: 0
@@ -4559,6 +4563,7 @@ MonoBehaviour:
   riddleTarget: {fileID: 0}
   resetRiddleOnWrong: 1
   disableRiddleButtonsOnSuccess: 1
+  backTargetOverride: {fileID: 0}
   parentToDeactivate: {fileID: 1541017922}
   enableHoverAlpha: 1
   hoverOnAlpha: 1
@@ -5568,6 +5573,7 @@ MonoBehaviour:
   riddleTarget: {fileID: 0}
   resetRiddleOnWrong: 1
   disableRiddleButtonsOnSuccess: 1
+  backTargetOverride: {fileID: 0}
   parentToDeactivate: {fileID: 1996420380}
   enableHoverAlpha: 1
   hoverOnAlpha: 1
@@ -5771,6 +5777,7 @@ MonoBehaviour:
   riddleTarget: {fileID: 0}
   resetRiddleOnWrong: 1
   disableRiddleButtonsOnSuccess: 1
+  backTargetOverride: {fileID: 287094728}
   parentToDeactivate: {fileID: 2009757360}
   enableHoverAlpha: 1
   hoverOnAlpha: 1

@@ -8,15 +8,37 @@ public class GameSettings : MonoBehaviour
     [SerializeField] private GameObject blackLayer;
     [SerializeField] private float fadeDuration = 0.35f;
 
+    [Header("Navigation")]
+    [SerializeField] private Button backButton;
+
     private bool isFading;
     private CanvasGroup blackLayerGroup;
     private Graphic blackLayerGraphic;
+    private PrefabSwitchList activeSwitchList;
 
     private void Awake()
     {
         CacheBlackLayerComponents();
         SetAlpha(0f);
         SetRaycastBlock(false);
+    }
+
+    private void OnEnable()
+    {
+        if (backButton != null)
+        {
+            backButton.onClick.AddListener(HandleBackPressed);
+        }
+
+        RefreshBackButton();
+    }
+
+    private void OnDisable()
+    {
+        if (backButton != null)
+        {
+            backButton.onClick.RemoveListener(HandleBackPressed);
+        }
     }
 
     private void CacheBlackLayerComponents()
@@ -60,6 +82,43 @@ public class GameSettings : MonoBehaviour
         }
 
         StartCoroutine(FadeRoutine(onBlack));
+    }
+
+    public void SetActiveSwitchList(PrefabSwitchList list)
+    {
+        activeSwitchList = list;
+        RefreshBackButton();
+    }
+
+    public void ClearActiveSwitchList(PrefabSwitchList list)
+    {
+        if (activeSwitchList == list)
+        {
+            activeSwitchList = null;
+        }
+        RefreshBackButton();
+    }
+
+    private void HandleBackPressed()
+    {
+        if (activeSwitchList == null)
+        {
+            return;
+        }
+
+        activeSwitchList.GoBack();
+        RefreshBackButton();
+    }
+
+    public void RefreshBackButton()
+    {
+        if (backButton == null)
+        {
+            return;
+        }
+
+        bool shouldShow = activeSwitchList != null && activeSwitchList.CanGoBack();
+        backButton.gameObject.SetActive(shouldShow);
     }
 
     private IEnumerator FadeRoutine(System.Action onBlack)
