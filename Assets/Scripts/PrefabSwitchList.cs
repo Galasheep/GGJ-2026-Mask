@@ -3,6 +3,12 @@ using UnityEngine.UI;
 
 public class PrefabSwitchList : MonoBehaviour
 {
+    [Header("UI asset list")]
+    [SerializeField] private MaskUiAssetList uiAssets;
+
+    [Header("Optional mask UI controller")]
+    [SerializeField] private maskfeature maskFeature;
+
     [System.Serializable]
     public struct ButtonTarget
     {
@@ -36,6 +42,7 @@ public class PrefabSwitchList : MonoBehaviour
         {
             Button button = buttons[i].button;
             GameObject target = buttons[i].target;
+            int buttonIndex = i;
 
             if (button == null)
             {
@@ -53,22 +60,22 @@ public class PrefabSwitchList : MonoBehaviour
                 hover.Configure(hoverOnAlpha, hoverOffAlpha);
             }
 
-            button.onClick.AddListener(() => ActivateTarget(target));
+            button.onClick.AddListener(() => ActivateTarget(target, buttonIndex));
         }
     }
 
-    private void ActivateTarget(GameObject target)
+    private void ActivateTarget(GameObject target, int buttonIndex)
     {
         if (gameSettings != null)
         {
-            gameSettings.FadeAndSwitch(() => SwitchNow(target));
+            gameSettings.FadeAndSwitch(() => SwitchNow(target, buttonIndex));
             return;
         }
 
-        SwitchNow(target);
+        SwitchNow(target, buttonIndex);
     }
 
-    private void SwitchNow(GameObject target)
+    private void SwitchNow(GameObject target, int buttonIndex)
     {
         if (buttons != null)
         {
@@ -84,6 +91,11 @@ public class PrefabSwitchList : MonoBehaviour
         if (target != null)
         {
             target.SetActive(true);
+        }
+
+        if (maskFeature != null)
+        {
+            maskFeature.ApplyAssets(uiAssets, buttonIndex);
         }
 
         if (parentToDeactivate != null)
