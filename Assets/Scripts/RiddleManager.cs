@@ -71,7 +71,10 @@ public class RiddleManager : MonoBehaviour
             return;
         }
 
-        solvedRiddleIds.Add(key);
+        if (solvedRiddleIds.Add(key) && SFXController.Instance != null)
+        {
+            SFXController.Instance.PlayRiddleSolved();
+        }
     }
 
     /// <summary>Returns true if the riddle with the given ID has been solved.</summary>

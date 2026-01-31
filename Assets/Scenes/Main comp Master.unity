@@ -11571,6 +11571,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6162086509513463707, guid: 091ba79edbf8ac144ba9dae4a1f0a69d, type: 3}
+      propertyPath: riddleSolved
+      value: 
+      objectReference: {fileID: 8300000, guid: 5edd175898249df4ca8a4b11a0136db8, type: 3}
     - target: {fileID: 6593714425548718450, guid: 091ba79edbf8ac144ba9dae4a1f0a69d, type: 3}
       propertyPath: m_Name
       value: Game settings

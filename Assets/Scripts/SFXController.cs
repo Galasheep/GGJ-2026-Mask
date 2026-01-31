@@ -28,6 +28,9 @@ public class SFXController : MonoBehaviour
     [Tooltip("Picking up items to inventory")]
     [SerializeField] private AudioClip itemPickup;
 
+    [Tooltip("When a riddle is solved correctly")]
+    [SerializeField] private AudioClip riddleSolved;
+
     [Tooltip("Hovering over UI (e.g. buttons); stops when pointer exits.")]
     [SerializeField] private AudioClip hover;
     [SerializeField] private AudioSource hoverSource;
@@ -240,6 +243,12 @@ public class SFXController : MonoBehaviour
     public void PlayItemPickup()
     {
         PlayOneShot(itemPickup);
+    }
+
+    /// <summary>Use when a riddle is solved correctly.</summary>
+    public void PlayRiddleSolved()
+    {
+        PlayOneShot(riddleSolved);
     }
 
     /// <summary>Start hover sound with fade in (stops when StopHover is called or pointer exits).</summary>
