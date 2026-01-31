@@ -170,6 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PrefabSwitchList
   uiAssets: {fileID: 11400000, guid: 96aa5dc082f4b46e8bec354f119668e1, type: 2}
+  fallbackSprite: {fileID: 0}
   maskFeature: {fileID: 1006269109}
   buttons:
   - button: {fileID: 0}
@@ -419,6 +420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PrefabSwitchList
   uiAssets: {fileID: 11400000, guid: 96aa5dc082f4b46e8bec354f119668e1, type: 2}
+  fallbackSprite: {fileID: 0}
   maskFeature: {fileID: 1006269109}
   buttons:
   - button: {fileID: 2089595573}
@@ -826,6 +828,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PrefabSwitchList
   uiAssets: {fileID: 11400000, guid: 96aa5dc082f4b46e8bec354f119668e1, type: 2}
+  fallbackSprite: {fileID: 0}
   maskFeature: {fileID: 1006269109}
   buttons:
   - button: {fileID: 0}
@@ -1272,6 +1275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PrefabSwitchList
   uiAssets: {fileID: 11400000, guid: 96aa5dc082f4b46e8bec354f119668e1, type: 2}
+  fallbackSprite: {fileID: 0}
   maskFeature: {fileID: 1006269109}
   buttons:
   - button: {fileID: 125000353}
@@ -1461,6 +1465,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PrefabSwitchList
   uiAssets: {fileID: 11400000, guid: 96aa5dc082f4b46e8bec354f119668e1, type: 2}
+  fallbackSprite: {fileID: 0}
   maskFeature: {fileID: 1006269109}
   buttons:
   - button: {fileID: 0}
@@ -1881,6 +1886,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PrefabSwitchList
   uiAssets: {fileID: 11400000, guid: 9cfa13b4f4884496b952580aaf9a76df, type: 2}
+  fallbackSprite: {fileID: 0}
   maskFeature: {fileID: 1006269109}
   buttons:
   - button: {fileID: 0}
@@ -2092,6 +2098,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PrefabSwitchList
   uiAssets: {fileID: 11400000, guid: 96aa5dc082f4b46e8bec354f119668e1, type: 2}
+  fallbackSprite: {fileID: 0}
   maskFeature: {fileID: 1006269109}
   buttons: []
   riddleButtons: []
@@ -2904,6 +2911,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PrefabSwitchList
   uiAssets: {fileID: 11400000, guid: fb73a04b723171741b801bac19d7729f, type: 2}
+  fallbackSprite: {fileID: 0}
   maskFeature: {fileID: 1006269109}
   buttons:
   - button: {fileID: 0}
@@ -3162,6 +3170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PrefabSwitchList
   uiAssets: {fileID: 11400000, guid: 96aa5dc082f4b46e8bec354f119668e1, type: 2}
+  fallbackSprite: {fileID: 0}
   maskFeature: {fileID: 1006269109}
   buttons:
   - button: {fileID: 989345616}
@@ -3639,7 +3648,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 3766746971322917272, guid: d299a1852cf6f437b9d6e3384eee47a0, type: 3}
+  m_Sprite: {fileID: -5297680257477436801, guid: 1bead422382b84e048a4bea2b4450a5b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4622,6 +4631,8 @@ MonoBehaviour:
   bgImage: {fileID: 1804361506}
   maskImage: {fileID: 1176376411}
   onButton: {fileID: 971402581}
+  onButtons: []
+  onButtonMaskIndices: 
   offButton: {fileID: 741784689}
   inventoryAnimator: {fileID: 550352480}
   outTrigger: Out
@@ -5618,6 +5629,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PrefabSwitchList
   uiAssets: {fileID: 11400000, guid: 96aa5dc082f4b46e8bec354f119668e1, type: 2}
+  fallbackSprite: {fileID: 0}
   maskFeature: {fileID: 1006269109}
   buttons:
   - button: {fileID: 0}
@@ -6191,6 +6203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PrefabSwitchList
   uiAssets: {fileID: 11400000, guid: 96aa5dc082f4b46e8bec354f119668e1, type: 2}
+  fallbackSprite: {fileID: 0}
   maskFeature: {fileID: 1006269109}
   buttons: []
   riddleButtons: []
@@ -7012,6 +7025,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PrefabSwitchList
   uiAssets: {fileID: 11400000, guid: 96aa5dc082f4b46e8bec354f119668e1, type: 2}
+  fallbackSprite: {fileID: 0}
   maskFeature: {fileID: 1006269109}
   buttons:
   - button: {fileID: 0}
@@ -7086,6 +7100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PrefabSwitchList
   uiAssets: {fileID: 11400000, guid: 96aa5dc082f4b46e8bec354f119668e1, type: 2}
+  fallbackSprite: {fileID: 0}
   maskFeature: {fileID: 1006269109}
   buttons: []
   riddleButtons: []
@@ -7639,7 +7654,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1924810237
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7676,6 +7691,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PrefabSwitchList
   uiAssets: {fileID: 11400000, guid: 96aa5dc082f4b46e8bec354f119668e1, type: 2}
+  fallbackSprite: {fileID: 0}
   maskFeature: {fileID: 1006269109}
   buttons:
   - button: {fileID: 1360975220}
@@ -7879,6 +7895,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PrefabSwitchList
   uiAssets: {fileID: 11400000, guid: 96aa5dc082f4b46e8bec354f119668e1, type: 2}
+  fallbackSprite: {fileID: 0}
   maskFeature: {fileID: 1006269109}
   buttons:
   - button: {fileID: 799095661}
@@ -8152,6 +8169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PrefabSwitchList
   uiAssets: {fileID: 11400000, guid: 96aa5dc082f4b46e8bec354f119668e1, type: 2}
+  fallbackSprite: {fileID: 0}
   maskFeature: {fileID: 1006269109}
   buttons:
   - button: {fileID: 559077794}
