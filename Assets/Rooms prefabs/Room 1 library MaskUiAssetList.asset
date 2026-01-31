@@ -17,3 +17,7 @@ MonoBehaviour:
   - {fileID: 5207850873004991794, guid: c0c9b2c95eb12b241a4604e0ea1ddd94, type: 3}
   - {fileID: 21300000, guid: db5cc6d99e6afeb4e9eb55462e6a6794, type: 3}
   - {fileID: 21300000, guid: e5d74469198852f4c97ca200653fd6a5, type: 3}
+  MaskMusic:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 57994be4810ea4b4d87638e50c386566, type: 3}

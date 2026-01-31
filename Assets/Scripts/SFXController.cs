@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -32,10 +33,20 @@ public class SFXController : MonoBehaviour
     [SerializeField] private AudioClip mainMusic;
     [SerializeField] private bool playMusicOnStart = true;
     [SerializeField] private AudioSource musicSource;
+    [Tooltip("Dedicated source for per-mask music. Auto-created if missing.")]
+    [SerializeField] private AudioSource maskMusicSource;
+    [Tooltip("Main music volume multiplier when mask music is playing (0–1).")]
+    [SerializeField, Range(0f, 1f)] private float mainMusicDuckVolume = 0.25f;
+    [Tooltip("Duration to fade main music volume when ducking or restoring (seconds).")]
+    [SerializeField] private float musicVolumeFadeDuration = 0.3f;
 
     [Header("Optional")]
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private bool persistAcrossScenes;
+
+    private float savedMainMusicVolume = 1f;
+    private bool isMainMusicDucked;
+    private Coroutine mainMusicFadeRoutine;
 
     private void Awake()
     {
@@ -90,6 +101,30 @@ public class SFXController : MonoBehaviour
         else
         {
             musicSource.loop = true;
+        }
+
+        if (maskMusicSource == null)
+        {
+            AudioSource[] sources = GetComponents<AudioSource>();
+            for (int i = 0; i < sources.Length; i++)
+            {
+                if (sources[i] != audioSource && sources[i] != musicSource)
+                {
+                    maskMusicSource = sources[i];
+                    break;
+                }
+            }
+        }
+
+        if (maskMusicSource == null)
+        {
+            maskMusicSource = gameObject.AddComponent<AudioSource>();
+            maskMusicSource.playOnAwake = false;
+            maskMusicSource.loop = true;
+        }
+        else
+        {
+            maskMusicSource.loop = true;
         }
 
         if (playMusicOnStart && mainMusic != null)
@@ -194,15 +229,105 @@ public class SFXController : MonoBehaviour
         }
     }
 
-    /// <summary>Set main music volume (0–1).</summary>
+    /// <summary>Set main music volume (0–1). Also used as restore value when mask music stops.</summary>
     public void SetMusicVolume(float volume)
     {
-        if (musicSource != null)
+        float v = Mathf.Clamp01(volume);
+        savedMainMusicVolume = v;
+        if (musicSource != null && !isMainMusicDucked)
         {
-            musicSource.volume = Mathf.Clamp01(volume);
+            musicSource.volume = v;
         }
     }
 
     /// <summary>Whether main music is currently playing.</summary>
     public bool IsMainMusicPlaying => musicSource != null && musicSource.isPlaying;
+
+    /// <summary>Play music for the current mask (from UI assets). Lowers main music volume; loops until stopped.</summary>
+    public void PlayMaskMusic(AudioClip clip)
+    {
+        if (maskMusicSource == null)
+        {
+            return;
+        }
+
+        if (clip == null)
+        {
+            maskMusicSource.Stop();
+            RestoreMainMusicVolume();
+            return;
+        }
+
+        if (musicSource != null)
+        {
+            if (!isMainMusicDucked)
+            {
+                savedMainMusicVolume = musicSource.volume;
+                isMainMusicDucked = true;
+            }
+            float targetVolume = savedMainMusicVolume * mainMusicDuckVolume;
+            StartFadeMainMusicVolume(targetVolume);
+        }
+
+        maskMusicSource.clip = clip;
+        maskMusicSource.loop = true;
+        maskMusicSource.Play();
+    }
+
+    /// <summary>Stop mask music and restore main music volume.</summary>
+    public void StopMaskMusic()
+    {
+        if (maskMusicSource != null)
+        {
+            maskMusicSource.Stop();
+        }
+
+        RestoreMainMusicVolume();
+    }
+
+    private void RestoreMainMusicVolume()
+    {
+        StartFadeMainMusicVolume(savedMainMusicVolume);
+        isMainMusicDucked = false;
+    }
+
+    private void StartFadeMainMusicVolume(float targetVolume)
+    {
+        if (mainMusicFadeRoutine != null)
+        {
+            StopCoroutine(mainMusicFadeRoutine);
+            mainMusicFadeRoutine = null;
+        }
+
+        if (musicSource == null)
+        {
+            return;
+        }
+
+        mainMusicFadeRoutine = StartCoroutine(FadeMainMusicVolumeRoutine(targetVolume));
+    }
+
+    private IEnumerator FadeMainMusicVolumeRoutine(float targetVolume)
+    {
+        if (musicSource == null)
+        {
+            mainMusicFadeRoutine = null;
+            yield break;
+        }
+
+        float from = musicSource.volume;
+        float duration = Mathf.Max(0.001f, musicVolumeFadeDuration);
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
+            musicSource.volume = Mathf.Lerp(from, targetVolume, t);
+            yield return null;
+        }
+
+        musicSource.volume = targetVolume;
+        mainMusicFadeRoutine = null;
+    }
 }

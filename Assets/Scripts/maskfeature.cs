@@ -133,6 +133,10 @@ public class maskfeature : MonoBehaviour
     {
         lastMaskIndex = maskIndex;
         ApplyList(list);
+        if (SFXController.Instance != null && list != null)
+        {
+            SFXController.Instance.PlayMaskMusic(list.GetMusicForMaskIndex(maskIndex));
+        }
     }
 
     public void ApplyList(MaskUiAssetList list)
@@ -160,7 +164,6 @@ public class maskfeature : MonoBehaviour
 
     public void TurnOn()
     {
-        SFXController.Instance?.PlayMaskRoomSwitch();
         TriggerOut();
         if (forceFallback)
         {
@@ -180,7 +183,6 @@ public class maskfeature : MonoBehaviour
 
     public void TurnOff()
     {
-        SFXController.Instance?.PlayMaskRemove();
         TriggerIn();
     }
 
@@ -202,6 +204,7 @@ public class maskfeature : MonoBehaviour
             return;
         }
 
+        SFXController.Instance?.PlayMaskRoomSwitch();
         SetActive(true);
         CancelDisable();
         StartFadeZoomIn();
@@ -218,6 +221,9 @@ public class maskfeature : MonoBehaviour
 
     public void TriggerIn()
     {
+        SFXController.Instance?.PlayMaskRemove();
+        SFXController.Instance?.StopMaskMusic();
+
         if (inventoryAnimator == null)
         {
             SetActive(false);
