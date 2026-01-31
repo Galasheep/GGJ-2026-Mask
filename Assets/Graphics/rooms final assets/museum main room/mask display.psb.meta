@@ -183,7 +183,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 262, y: 1420}
     spritePosition: {x: 613, y: 535}
-  - name: Layer 1
+  - name: code 1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -205,7 +205,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 4, y: 1769}
     spritePosition: {x: 131, y: 217}
-  - name: Layer 3
+  - name: code 2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -227,7 +227,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 550, y: 1092}
     spritePosition: {x: 1030, y: 209}
-  - name: Layer 4
+  - name: code 3
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -289,7 +289,43 @@ ScriptedImporter:
     characterGroups: []
     pivot: {x: 0, y: 0}
     boneReadOnly: 0
-  platformSettings: []
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Android
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
   mosaicLayers: 1
   characterMode: 1
   documentPivot: {x: 0, y: 0}
@@ -358,8 +394,8 @@ ScriptedImporter:
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: Layer 1
-    spriteName: Layer 1
+  - name: code 1
+    spriteName: code 1
     isGroup: 0
     parentIndex: -1
     spriteID: 0597936dac71b9f42b858934a2ac9996
@@ -368,8 +404,8 @@ ScriptedImporter:
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: Layer 3
-    spriteName: Layer 3
+  - name: code 2
+    spriteName: code 2
     isGroup: 0
     parentIndex: -1
     spriteID: 3f3ff70756ffb10419fbcbe7e10e0899
@@ -378,8 +414,8 @@ ScriptedImporter:
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: Layer 4
-    spriteName: Layer 4
+  - name: code 3
+    spriteName: code 3
     isGroup: 0
     parentIndex: -1
     spriteID: 9dd5d229178fbdb428dbd1fafa0a4c0f
@@ -402,7 +438,7 @@ ScriptedImporter:
   rigPSDLayers: []
   sharedRigPSDLayers: []
   importFileNodeState: 1
-  platformSettingsDirtyTick: 0
+  platformSettingsDirtyTick: 639054695998181542
   spriteSizeExpandChanged: 0
   generateGOHierarchy: 0
   textureAssetName: 
