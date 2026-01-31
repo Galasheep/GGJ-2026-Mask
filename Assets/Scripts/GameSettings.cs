@@ -99,6 +99,11 @@ public class GameSettings : MonoBehaviour
         RefreshBackButton();
     }
 
+    public PrefabSwitchList GetActiveSwitchList()
+    {
+        return activeSwitchList;
+    }
+
     private void HandleBackPressed()
     {
         if (activeSwitchList == null)
