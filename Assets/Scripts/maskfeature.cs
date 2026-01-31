@@ -12,6 +12,8 @@ public class maskfeature : MonoBehaviour
 
     [Header("Optional toggle buttons")]
     [SerializeField] private Button onButton;
+    [SerializeField] private Button[] onButtons;
+    [SerializeField] private int[] onButtonMaskIndices;
     [SerializeField] private Button offButton;
 
     [Header("Optional inventory animation")]
@@ -93,6 +95,21 @@ public class maskfeature : MonoBehaviour
                 onButton.onClick.AddListener(TurnOn);
             }
 
+            if (onButtons != null)
+            {
+                for (int i = 0; i < onButtons.Length; i++)
+                {
+                    Button button = onButtons[i];
+                    int maskIndex = ResolveOnButtonMaskIndex(i);
+                    if (button == null)
+                    {
+                        continue;
+                    }
+
+                    button.onClick.AddListener(() => TurnOnWithMaskIndex(maskIndex));
+                }
+            }
+
             if (offButton != null)
             {
                 offButton.onClick.AddListener(TurnOff);
@@ -140,6 +157,12 @@ public class maskfeature : MonoBehaviour
         TriggerOut();
         SyncActiveSwitchList();
         ApplyCached();
+    }
+
+    public void TurnOnWithMaskIndex(int maskIndex)
+    {
+        lastMaskIndex = maskIndex;
+        TurnOn();
     }
 
     public void TurnOff()
@@ -351,5 +374,17 @@ public class maskfeature : MonoBehaviour
         {
             lastList = assets;
         }
+    }
+
+    private int ResolveOnButtonMaskIndex(int buttonIndex)
+    {
+        if (onButtonMaskIndices != null &&
+            buttonIndex >= 0 &&
+            buttonIndex < onButtonMaskIndices.Length)
+        {
+            return onButtonMaskIndices[buttonIndex];
+        }
+
+        return buttonIndex;
     }
 }
