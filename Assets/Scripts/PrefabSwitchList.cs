@@ -24,6 +24,8 @@ public class PrefabSwitchList : MonoBehaviour
     [SerializeField] private ButtonTarget[] buttons;
 
     [Header("Riddle button sequence")]
+    [Tooltip("ID of this riddle. Use the same ID on CollectibleItem (Required Riddle Id) to gate items behind solving this riddle.")]
+    [SerializeField] private string riddleId;
     [SerializeField] private Button[] riddleButtons;
     [SerializeField] private int[] riddleOrder;
     [SerializeField] private GameObject riddleTarget;
@@ -208,6 +210,11 @@ public class PrefabSwitchList : MonoBehaviour
 
     private void ActivateRiddleNow()
     {
+        if (!string.IsNullOrEmpty(riddleId))
+        {
+            RiddleManager.EnsureExists().MarkRiddleSolved(riddleId);
+        }
+
         if (riddleTarget != null)
         {
             riddleTarget.SetActive(true);

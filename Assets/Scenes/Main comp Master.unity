@@ -949,6 +949,7 @@ MonoBehaviour:
   - button: {fileID: 684038048}
     target: {fileID: 1122307608}
     uiAssetsOverride: {fileID: 0}
+  riddleId: 
   riddleButtons: []
   riddleOrder: 
   riddleTarget: {fileID: 0}
@@ -1153,6 +1154,7 @@ MonoBehaviour:
   - button: {fileID: 1233144461}
     target: {fileID: 98388659}
     uiAssetsOverride: {fileID: 0}
+  riddleId: 
   riddleButtons: []
   riddleOrder: 
   riddleTarget: {fileID: 0}
@@ -1468,6 +1470,7 @@ MonoBehaviour:
   fallbackSprite: {fileID: -5286705378751409908, guid: 0d76ac7770bc9944d9de46d707b63bb7, type: 3}
   maskFeature: {fileID: 1006269109}
   buttons: []
+  riddleId: 2
   riddleButtons:
   - {fileID: 1116038758}
   - {fileID: 182887811}
@@ -1865,6 +1868,7 @@ MonoBehaviour:
   - button: {fileID: 602924250}
     target: {fileID: 1909772702}
     uiAssetsOverride: {fileID: 0}
+  riddleId: 
   riddleButtons: []
   riddleOrder: 
   riddleTarget: {fileID: 0}
@@ -2369,6 +2373,7 @@ MonoBehaviour:
   - button: {fileID: 981478878}
     target: {fileID: 1491503083}
     uiAssetsOverride: {fileID: 0}
+  riddleId: 
   riddleButtons: []
   riddleOrder: 
   riddleTarget: {fileID: 0}
@@ -3889,6 +3894,7 @@ MonoBehaviour:
   fallbackSprite: {fileID: -5286705378751409908, guid: 0d76ac7770bc9944d9de46d707b63bb7, type: 3}
   maskFeature: {fileID: 1006269109}
   buttons: []
+  riddleId: 1
   riddleButtons:
   - {fileID: 558678591}
   - {fileID: 5985716}
@@ -4026,6 +4032,7 @@ MonoBehaviour:
   fallbackSprite: {fileID: -5286705378751409908, guid: 0d76ac7770bc9944d9de46d707b63bb7, type: 3}
   maskFeature: {fileID: 1006269109}
   buttons: []
+  riddleId: 3
   riddleButtons:
   - {fileID: 596064782}
   - {fileID: 1918377697}
@@ -4130,6 +4137,7 @@ MonoBehaviour:
   fallbackSprite: {fileID: 0}
   maskFeature: {fileID: 1006269109}
   buttons: []
+  riddleId: 
   riddleButtons: []
   riddleOrder: 
   riddleTarget: {fileID: 0}
@@ -4475,6 +4483,7 @@ MonoBehaviour:
   - button: {fileID: 0}
     target: {fileID: 0}
     uiAssetsOverride: {fileID: 0}
+  riddleId: 
   riddleButtons: []
   riddleOrder: 
   riddleTarget: {fileID: 0}
@@ -5329,6 +5338,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ff9db409338d794f969b400d40b1a54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!114 &1006269111 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9159865306769595508, guid: 091ba79edbf8ac144ba9dae4a1f0a69d, type: 3}
+  m_PrefabInstance: {fileID: 6190262677784621247}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16d81c8039a8d504da897154ee7a42fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryManager
 --- !u!1 &1018099786
 GameObject:
   m_ObjectHideFlags: 0
@@ -5620,8 +5640,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92eda5ec13baa0945be49cd2b2df3d82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectibleItem
-  inventoryManager: {fileID: 0}
+  inventoryManager: {fileID: 1006269111}
   itemId: 4
+  requiredRiddleId: 3
+  lockedHint: 
   hoverMaterial: {fileID: 2100000, guid: 80cda6b8662cf234ba2d5b1c5992d5cf, type: 2}
   targetRenderers: []
   targetGraphics:
@@ -6137,6 +6159,7 @@ MonoBehaviour:
   - button: {fileID: 0}
     target: {fileID: 0}
     uiAssetsOverride: {fileID: 0}
+  riddleId: 
   riddleButtons: []
   riddleOrder: 
   riddleTarget: {fileID: 0}
@@ -6825,8 +6848,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92eda5ec13baa0945be49cd2b2df3d82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectibleItem
-  inventoryManager: {fileID: 0}
+  inventoryManager: {fileID: 1006269111}
   itemId: 1
+  requiredRiddleId: 
+  lockedHint: 
   hoverMaterial: {fileID: 2100000, guid: 80cda6b8662cf234ba2d5b1c5992d5cf, type: 2}
   targetRenderers: []
   targetGraphics:
@@ -7755,6 +7780,7 @@ MonoBehaviour:
   fallbackSprite: {fileID: 0}
   maskFeature: {fileID: 1006269109}
   buttons: []
+  riddleId: 
   riddleButtons: []
   riddleOrder: 
   riddleTarget: {fileID: 0}
@@ -7833,6 +7859,7 @@ MonoBehaviour:
   - button: {fileID: 100390278}
     target: {fileID: 2053532638}
     uiAssetsOverride: {fileID: 0}
+  riddleId: 
   riddleButtons: []
   riddleOrder: 
   riddleTarget: {fileID: 0}
@@ -7922,6 +7949,7 @@ MonoBehaviour:
   - button: {fileID: 840550178}
     target: {fileID: 126869256}
     uiAssetsOverride: {fileID: 0}
+  riddleId: 
   riddleButtons: []
   riddleOrder: 
   riddleTarget: {fileID: 0}
@@ -7999,6 +8027,7 @@ MonoBehaviour:
   fallbackSprite: {fileID: 0}
   maskFeature: {fileID: 1006269109}
   buttons: []
+  riddleId: 
   riddleButtons: []
   riddleOrder: 
   riddleTarget: {fileID: 0}
@@ -8334,6 +8363,7 @@ MonoBehaviour:
   - button: {fileID: 0}
     target: {fileID: 0}
     uiAssetsOverride: {fileID: 0}
+  riddleId: 
   riddleButtons: []
   riddleOrder: 
   riddleTarget: {fileID: 0}
@@ -8523,8 +8553,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92eda5ec13baa0945be49cd2b2df3d82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectibleItem
-  inventoryManager: {fileID: 0}
+  inventoryManager: {fileID: 1006269111}
   itemId: 3
+  requiredRiddleId: 2
+  lockedHint: 
   hoverMaterial: {fileID: 2100000, guid: 80cda6b8662cf234ba2d5b1c5992d5cf, type: 2}
   targetRenderers: []
   targetGraphics:
@@ -8861,6 +8893,7 @@ MonoBehaviour:
   - button: {fileID: 525412719}
     target: {fileID: 722690851}
     uiAssetsOverride: {fileID: 0}
+  riddleId: 
   riddleButtons: []
   riddleOrder: 
   riddleTarget: {fileID: 0}
@@ -9378,6 +9411,7 @@ MonoBehaviour:
   - button: {fileID: 0}
     target: {fileID: 0}
     uiAssetsOverride: {fileID: 0}
+  riddleId: 
   riddleButtons: []
   riddleOrder: 
   riddleTarget: {fileID: 0}
@@ -9467,8 +9501,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92eda5ec13baa0945be49cd2b2df3d82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectibleItem
-  inventoryManager: {fileID: 0}
+  inventoryManager: {fileID: 1006269111}
   itemId: 2
+  requiredRiddleId: 1
+  lockedHint: 
   hoverMaterial: {fileID: 2100000, guid: 80cda6b8662cf234ba2d5b1c5992d5cf, type: 2}
   targetRenderers: []
   targetGraphics:
@@ -10255,6 +10291,7 @@ MonoBehaviour:
   - button: {fileID: 52014889}
     target: {fileID: 1491503083}
     uiAssetsOverride: {fileID: 0}
+  riddleId: 
   riddleButtons: []
   riddleOrder: 
   riddleTarget: {fileID: 0}
@@ -11094,6 +11131,7 @@ MonoBehaviour:
   - button: {fileID: 0}
     target: {fileID: 0}
     uiAssetsOverride: {fileID: 0}
+  riddleId: 
   riddleButtons: []
   riddleOrder: 
   riddleTarget: {fileID: 0}
@@ -11660,18 +11698,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6162086509513463707, guid: 091ba79edbf8ac144ba9dae4a1f0a69d, type: 3}
-      propertyPath: hoverMaxVolume
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 6162086509513463707, guid: 091ba79edbf8ac144ba9dae4a1f0a69d, type: 3}
-      propertyPath: hoverFadeDuration
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6162086509513463707, guid: 091ba79edbf8ac144ba9dae4a1f0a69d, type: 3}
-      propertyPath: mainMusicMaxVolume
-      value: 0.2
-      objectReference: {fileID: 0}
     - target: {fileID: 6593714425548718450, guid: 091ba79edbf8ac144ba9dae4a1f0a69d, type: 3}
       propertyPath: m_Name
       value: Game settings
@@ -11688,6 +11714,10 @@ PrefabInstance:
       propertyPath: items.Array.data[2].iconObject
       value: 
       objectReference: {fileID: 1192193300}
+    - target: {fileID: 9159865306769595508, guid: 091ba79edbf8ac144ba9dae4a1f0a69d, type: 3}
+      propertyPath: items.Array.data[3].iconObject
+      value: 
+      objectReference: {fileID: 8819676810278839181}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11794,6 +11824,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba975b255968beb479d27a266cb15282, type: 3}
+--- !u!1 &8819676810278839181 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5594505752489078830, guid: ba975b255968beb479d27a266cb15282, type: 3}
+  m_PrefabInstance: {fileID: 8819676810278839180}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

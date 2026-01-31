@@ -256,6 +256,8 @@ MonoBehaviour:
     iconObject: {fileID: 0}
   - itemId: 3
     iconObject: {fileID: 0}
+  - itemId: 4
+    iconObject: {fileID: 0}
   deactivateIconsOnStart: 1
 --- !u!114 &6162086509513463707
 MonoBehaviour:
@@ -286,13 +288,15 @@ MonoBehaviour:
   itemPickup: {fileID: 8300000, guid: ba6ff50723fc8454ea9b2000bd58cbf9, type: 3}
   hover: {fileID: 8300000, guid: 8576b527733790743a1271e631d3aa9c, type: 3}
   hoverSource: {fileID: 4290211723983641999}
-  hoverFadeDuration: 1
+  hoverFadeDuration: 0.5
+  hoverMaxVolume: 0.05
   mainMusic: {fileID: 8300000, guid: 7541a473aa8a24049b20010bf9829011, type: 3}
   playMusicOnStart: 1
   musicSource: {fileID: 5788423785395719051}
   maskMusicSource: {fileID: 399639387901001740}
   mainMusicDuckVolume: 0.25
   musicVolumeFadeDuration: 1
+  mainMusicMaxVolume: 0.2
   audioSource: {fileID: 5679917554242233854}
   persistAcrossScenes: 0
 --- !u!82 &5679917554242233854
