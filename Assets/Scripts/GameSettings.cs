@@ -111,6 +111,7 @@ public class GameSettings : MonoBehaviour
             return;
         }
 
+        SFXController.Instance?.PlayUIButtonClick();
         activeSwitchList.GoBack();
         RefreshBackButton();
     }

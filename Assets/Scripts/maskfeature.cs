@@ -160,6 +160,7 @@ public class maskfeature : MonoBehaviour
 
     public void TurnOn()
     {
+        SFXController.Instance?.PlayMaskRoomSwitch();
         TriggerOut();
         if (forceFallback)
         {
@@ -179,6 +180,7 @@ public class maskfeature : MonoBehaviour
 
     public void TurnOff()
     {
+        SFXController.Instance?.PlayMaskRemove();
         TriggerIn();
     }
 

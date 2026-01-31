@@ -186,6 +186,7 @@ public class CollectibleItem : MonoBehaviour, IPointerEnterHandler, IPointerExit
     {
         isCollected = true;
         RestoreOriginalMaterials();
+        SFXController.Instance?.PlayItemPickup();
 
         if (inventoryManager != null)
         {

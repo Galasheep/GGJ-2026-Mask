@@ -169,6 +169,7 @@ public class PrefabSwitchList : MonoBehaviour
 
     private void HandleRiddlePress(int buttonIndex)
     {
+        SFXController.Instance?.PlayRiddleButton();
         if (riddleButtons == null || riddleOrder == null || riddleOrder.Length == 0)
         {
             return;
@@ -231,6 +232,7 @@ public class PrefabSwitchList : MonoBehaviour
 
     private void SwitchNow(GameObject target, int buttonIndex, bool recordHistory)
     {
+        SFXController.Instance?.PlaySwitchListWalk();
         if (recordHistory && currentTarget != null && currentTarget != target)
         {
             backHistory.Push(currentTarget);
