@@ -375,6 +375,23 @@ public class PrefabSwitchList : MonoBehaviour
         }
     }
 
+    /// <summary>Switch to a target with normal fade (e.g. for collection display). Does not record back history.</summary>
+    public void SwitchToTarget(GameObject target)
+    {
+        if (target == null)
+        {
+            return;
+        }
+
+        if (gameSettings != null)
+        {
+            gameSettings.FadeAndSwitch(() => SwitchNow(target, -1, false));
+            return;
+        }
+
+        SwitchNow(target, -1, false);
+    }
+
     public void GoBack()
     {
         GameObject target = backTargetOverride;

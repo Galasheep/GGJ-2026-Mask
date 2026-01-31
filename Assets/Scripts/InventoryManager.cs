@@ -8,13 +8,21 @@ public class InventoryManager : MonoBehaviour
     {
         public string itemId;
         public GameObject iconObject;
+        [Tooltip("Optional switch list target to show when collecting (normal fade like other switches). Leave empty to skip.")]
+        public GameObject displayTarget;
     }
 
     [Header("Inventory items (id -> icon)")]
     [SerializeField] private InventoryEntry[] items;
     [SerializeField] private bool deactivateIconsOnStart = true;
 
+    [Header("Collection display")]
+    [Tooltip("Switch list that owns the display targets. Used for fade + switch when collecting an item with a display target.")]
+    [SerializeField] private PrefabSwitchList collectionSwitchList;
+
     private readonly Dictionary<string, GameObject> itemLookup =
+        new Dictionary<string, GameObject>();
+    private readonly Dictionary<string, GameObject> displayTargetLookup =
         new Dictionary<string, GameObject>();
 
     private void Awake()
@@ -24,6 +32,11 @@ public class InventoryManager : MonoBehaviour
         if (deactivateIconsOnStart)
         {
             SetAllIconsActive(false);
+        }
+
+        if (collectionSwitchList == null)
+        {
+            collectionSwitchList = FindFirstObjectByType<PrefabSwitchList>();
         }
     }
 
@@ -40,6 +53,14 @@ public class InventoryManager : MonoBehaviour
         }
 
         icon.SetActive(true);
+
+        if (collectionSwitchList != null &&
+            displayTargetLookup.TryGetValue(itemId, out GameObject displayTarget) &&
+            displayTarget != null)
+        {
+            collectionSwitchList.SwitchToTarget(displayTarget);
+        }
+
         return true;
     }
 
@@ -63,6 +84,7 @@ public class InventoryManager : MonoBehaviour
     private void BuildLookup()
     {
         itemLookup.Clear();
+        displayTargetLookup.Clear();
 
         if (items == null)
         {
@@ -79,6 +101,11 @@ public class InventoryManager : MonoBehaviour
             }
 
             itemLookup[id] = icon;
+
+            if (items[i].displayTarget != null)
+            {
+                displayTargetLookup[id] = items[i].displayTarget;
+            }
         }
     }
 }
