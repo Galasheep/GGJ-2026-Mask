@@ -5154,33 +5154,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6162086509513463707, guid: 091ba79edbf8ac144ba9dae4a1f0a69d, type: 3}
-      propertyPath: itemPickup
-      value: 
-      objectReference: {fileID: 8300000, guid: ba6ff50723fc8454ea9b2000bd58cbf9, type: 3}
-    - target: {fileID: 6162086509513463707, guid: 091ba79edbf8ac144ba9dae4a1f0a69d, type: 3}
-      propertyPath: maskRemove
-      value: 
-      objectReference: {fileID: 8300000, guid: 7d59f9e77452e034fab196a833eeafa8, type: 3}
-    - target: {fileID: 6162086509513463707, guid: 091ba79edbf8ac144ba9dae4a1f0a69d, type: 3}
-      propertyPath: switchListWalkVariations.Array.size
-      value: 6
+      propertyPath: hoverMaxVolume
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 6162086509513463707, guid: 091ba79edbf8ac144ba9dae4a1f0a69d, type: 3}
-      propertyPath: 'switchListWalkVariations.Array.data[1]'
-      value: 
-      objectReference: {fileID: 8300000, guid: db57f7b83da47dd4eab72cff3ed3336d, type: 3}
+      propertyPath: hoverFadeDuration
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6162086509513463707, guid: 091ba79edbf8ac144ba9dae4a1f0a69d, type: 3}
-      propertyPath: 'switchListWalkVariations.Array.data[3]'
-      value: 
-      objectReference: {fileID: 8300000, guid: aba28d9c59f33284eab450e13bc86f4b, type: 3}
-    - target: {fileID: 6162086509513463707, guid: 091ba79edbf8ac144ba9dae4a1f0a69d, type: 3}
-      propertyPath: 'switchListWalkVariations.Array.data[4]'
-      value: 
-      objectReference: {fileID: 8300000, guid: e4b060a615d831e4d89ed718f0946eba, type: 3}
-    - target: {fileID: 6162086509513463707, guid: 091ba79edbf8ac144ba9dae4a1f0a69d, type: 3}
-      propertyPath: 'switchListWalkVariations.Array.data[5]'
-      value: 
-      objectReference: {fileID: 8300000, guid: e027e10a12bc7bb41b51e63f05d9e2ad, type: 3}
+      propertyPath: mainMusicMaxVolume
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 6593714425548718450, guid: 091ba79edbf8ac144ba9dae4a1f0a69d, type: 3}
       propertyPath: m_Name
       value: Game settings

@@ -28,6 +28,14 @@ public class SFXController : MonoBehaviour
     [Tooltip("Picking up items to inventory")]
     [SerializeField] private AudioClip itemPickup;
 
+    [Tooltip("Hovering over UI (e.g. buttons); stops when pointer exits.")]
+    [SerializeField] private AudioClip hover;
+    [SerializeField] private AudioSource hoverSource;
+    [Tooltip("Fade in/out duration for hover sound (seconds).")]
+    [SerializeField] private float hoverFadeDuration = 0.12f;
+    [Tooltip("Max volume for hover sound (0–1).")]
+    [SerializeField, Range(0f, 1f)] private float hoverMaxVolume = 1f;
+
     [Header("Music")]
     [Tooltip("Main background music (loops)")]
     [SerializeField] private AudioClip mainMusic;
@@ -39,6 +47,8 @@ public class SFXController : MonoBehaviour
     [SerializeField, Range(0f, 1f)] private float mainMusicDuckVolume = 0.25f;
     [Tooltip("Duration to fade main music volume when ducking or restoring (seconds).")]
     [SerializeField] private float musicVolumeFadeDuration = 0.3f;
+    [Tooltip("Max volume for main music (0–1).")]
+    [SerializeField, Range(0f, 1f)] private float mainMusicMaxVolume = 1f;
 
     [Header("Optional")]
     [SerializeField] private AudioSource audioSource;
@@ -47,6 +57,7 @@ public class SFXController : MonoBehaviour
     private float savedMainMusicVolume = 1f;
     private bool isMainMusicDucked;
     private Coroutine mainMusicFadeRoutine;
+    private Coroutine hoverFadeRoutine;
 
     private void Awake()
     {
@@ -125,6 +136,30 @@ public class SFXController : MonoBehaviour
         else
         {
             maskMusicSource.loop = true;
+        }
+
+        if (hoverSource == null)
+        {
+            AudioSource[] sources = GetComponents<AudioSource>();
+            for (int i = 0; i < sources.Length; i++)
+            {
+                if (sources[i] != audioSource && sources[i] != musicSource && sources[i] != maskMusicSource)
+                {
+                    hoverSource = sources[i];
+                    break;
+                }
+            }
+        }
+
+        if (hoverSource == null)
+        {
+            hoverSource = gameObject.AddComponent<AudioSource>();
+            hoverSource.playOnAwake = false;
+            hoverSource.loop = false;
+        }
+        else
+        {
+            hoverSource.loop = false;
         }
 
         if (playMusicOnStart && mainMusic != null)
@@ -207,6 +242,70 @@ public class SFXController : MonoBehaviour
         PlayOneShot(itemPickup);
     }
 
+    /// <summary>Start hover sound with fade in (stops when StopHover is called or pointer exits).</summary>
+    public void PlayHover()
+    {
+        if (hover == null || hoverSource == null)
+        {
+            return;
+        }
+        if (hoverFadeRoutine != null)
+        {
+            StopCoroutine(hoverFadeRoutine);
+            hoverFadeRoutine = null;
+        }
+        hoverSource.clip = hover;
+        hoverSource.loop = true;
+        hoverSource.volume = 0f;
+        hoverSource.Play();
+        hoverFadeRoutine = StartCoroutine(HoverFadeRoutine(0f, hoverMaxVolume));
+    }
+
+    /// <summary>Stop hover sound with fade out when pointer leaves UI.</summary>
+    public void StopHover()
+    {
+        if (hoverSource == null)
+        {
+            return;
+        }
+        if (hoverFadeRoutine != null)
+        {
+            StopCoroutine(hoverFadeRoutine);
+            hoverFadeRoutine = null;
+        }
+        float fromVolume = hoverSource.volume;
+        if (fromVolume <= 0f)
+        {
+            hoverSource.Stop();
+            return;
+        }
+        hoverFadeRoutine = StartCoroutine(HoverFadeRoutine(fromVolume, 0f));
+    }
+
+    private IEnumerator HoverFadeRoutine(float fromVolume, float toVolume)
+    {
+        if (hoverSource == null)
+        {
+            hoverFadeRoutine = null;
+            yield break;
+        }
+        float duration = Mathf.Max(0.001f, hoverFadeDuration);
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
+            hoverSource.volume = Mathf.Lerp(fromVolume, toVolume, t);
+            yield return null;
+        }
+        hoverSource.volume = toVolume;
+        if (toVolume <= 0f)
+        {
+            hoverSource.Stop();
+        }
+        hoverFadeRoutine = null;
+    }
+
     /// <summary>Start or restart main background music (loops).</summary>
     public void PlayMainMusic()
     {
@@ -217,6 +316,7 @@ public class SFXController : MonoBehaviour
 
         musicSource.clip = mainMusic;
         musicSource.loop = true;
+        musicSource.volume = savedMainMusicVolume * mainMusicMaxVolume;
         musicSource.Play();
     }
 
@@ -236,7 +336,7 @@ public class SFXController : MonoBehaviour
         savedMainMusicVolume = v;
         if (musicSource != null && !isMainMusicDucked)
         {
-            musicSource.volume = v;
+            musicSource.volume = v * mainMusicMaxVolume;
         }
     }
 
@@ -262,10 +362,11 @@ public class SFXController : MonoBehaviour
         {
             if (!isMainMusicDucked)
             {
-                savedMainMusicVolume = musicSource.volume;
+                float scale = Mathf.Max(mainMusicMaxVolume, 0.001f);
+                savedMainMusicVolume = musicSource.volume / scale;
                 isMainMusicDucked = true;
             }
-            float targetVolume = savedMainMusicVolume * mainMusicDuckVolume;
+            float targetVolume = savedMainMusicVolume * mainMusicDuckVolume * mainMusicMaxVolume;
             StartFadeMainMusicVolume(targetVolume);
         }
 
@@ -287,7 +388,7 @@ public class SFXController : MonoBehaviour
 
     private void RestoreMainMusicVolume()
     {
-        StartFadeMainMusicVolume(savedMainMusicVolume);
+        StartFadeMainMusicVolume(savedMainMusicVolume * mainMusicMaxVolume);
         isMainMusicDucked = false;
     }
 
