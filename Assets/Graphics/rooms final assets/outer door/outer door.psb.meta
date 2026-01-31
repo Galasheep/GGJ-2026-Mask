@@ -32,7 +32,7 @@ ScriptedImporter:
     sRGBTexture: 1
     spriteMode: 2
     spriteExtrude: 1
-    spriteMeshType: 1
+    spriteMeshType: 0
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
     spritePixelsToUnits: 100
@@ -103,8 +103,8 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 2764
-      y: 4
+      x: 4
+      y: 1092
       width: 408
       height: 667
     spriteID: 0242e2a0fd7239a45afe614a474bf820
@@ -115,9 +115,9 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 2764, y: 4}
-    spritePosition: {x: 1257, y: 263}
-  - name: outer door
+    uvTransform: {x: 4, y: 1092}
+    spritePosition: {x: 876, y: 184}
+  - name: outer doorq
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -228,12 +228,12 @@ ScriptedImporter:
     parentIndex: -1
     spriteID: 0242e2a0fd7239a45afe614a474bf820
     layerID: 2
-    mosaicPosition: {x: 2764, y: 4}
+    mosaicPosition: {x: 4, y: 1092}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: outer door
-    spriteName: outer door
+  - name: outer doorq
+    spriteName: outer doorq
     isGroup: 0
     parentIndex: -1
     spriteID: bfc059d576ad23e458fa128ab0ac3906
@@ -246,7 +246,7 @@ ScriptedImporter:
   rigPSDLayers: []
   sharedRigPSDLayers: []
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639054619485173995
+  platformSettingsDirtyTick: 639054645435064972
   spriteSizeExpandChanged: 0
   generateGOHierarchy: 0
   textureAssetName: 
