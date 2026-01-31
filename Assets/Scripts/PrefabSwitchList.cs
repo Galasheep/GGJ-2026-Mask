@@ -6,6 +6,9 @@ public class PrefabSwitchList : MonoBehaviour
     [Header("UI asset list")]
     [SerializeField] private MaskUiAssetList uiAssets;
 
+    [Header("Fallback image (when no UI assets)")]
+    [SerializeField] private Sprite fallbackSprite;
+
     [Header("Optional mask UI controller")]
     [SerializeField] private maskfeature maskFeature;
 
@@ -59,7 +62,16 @@ public class PrefabSwitchList : MonoBehaviour
         maskfeature feature = ResolveMaskFeature();
         if (feature != null)
         {
-            feature.ApplyList(uiAssets);
+            bool useFallback = IsEmptyUiAssets(uiAssets);
+            if (!useFallback)
+            {
+                maskfeature.ClearFallbackOnAll();
+                feature.ApplyList(uiAssets);
+            }
+            else
+            {
+                maskfeature.ApplyFallbackToAll(fallbackSprite, fallbackSprite);
+            }
         }
     }
 
@@ -75,6 +87,11 @@ public class PrefabSwitchList : MonoBehaviour
     public MaskUiAssetList GetUiAssets()
     {
         return uiAssets;
+    }
+
+    public Sprite GetFallbackSprite()
+    {
+        return fallbackSprite;
     }
 
     private void Awake()
@@ -245,29 +262,53 @@ public class PrefabSwitchList : MonoBehaviour
         if (feature != null)
         {
             MaskUiAssetList listToUse = uiAssets;
-            if (target != null)
+            Sprite fallbackToUse = fallbackSprite;
+            bool useFallback = IsEmptyUiAssets(uiAssets);
+            if (!useFallback && target != null)
             {
                 PrefabSwitchList targetList = target.GetComponentInChildren<PrefabSwitchList>(true);
                 if (targetList != null && targetList != this)
                 {
                     MaskUiAssetList targetAssets = targetList.GetUiAssets();
-                    if (targetAssets != null)
+                    if (!IsEmptyUiAssets(targetAssets))
                     {
                         listToUse = targetAssets;
+                    }
+                    else
+                    {
+                        fallbackToUse = targetList.GetFallbackSprite();
+                        listToUse = null;
+                        useFallback = true;
                     }
                 }
             }
 
-            if (buttons != null && buttonIndex >= 0 && buttonIndex < buttons.Length)
+            if (!useFallback && buttons != null && buttonIndex >= 0 && buttonIndex < buttons.Length)
             {
                 MaskUiAssetList overrideAssets = buttons[buttonIndex].uiAssetsOverride;
                 if (overrideAssets != null)
                 {
-                    listToUse = overrideAssets;
+                    if (!IsEmptyUiAssets(overrideAssets))
+                    {
+                        listToUse = overrideAssets;
+                    }
+                    else
+                    {
+                        listToUse = null;
+                        useFallback = true;
+                    }
                 }
             }
 
-            feature.ApplyAssets(listToUse, buttonIndex);
+            if (!useFallback && listToUse != null)
+            {
+                maskfeature.ClearFallbackOnAll();
+                feature.ApplyAssets(listToUse, buttonIndex);
+            }
+            else
+            {
+                maskfeature.ApplyFallbackToAll(fallbackToUse, fallbackToUse);
+            }
         }
 
         if (parentToDeactivate != null)
@@ -374,5 +415,17 @@ public class PrefabSwitchList : MonoBehaviour
                 return;
             }
         }
+    }
+
+    private bool IsEmptyUiAssets(MaskUiAssetList assets)
+    {
+        if (assets == null)
+        {
+            return true;
+        }
+
+        bool hasBg = assets.BG != null;
+        bool hasMasks = assets.Masks != null && assets.Masks.Count > 0;
+        return !hasBg && !hasMasks;
     }
 }
