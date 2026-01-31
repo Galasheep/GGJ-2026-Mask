@@ -312,7 +312,7 @@ public class PrefabSwitchList : MonoBehaviour
             if (!useFallback && listToUse != null)
             {
                 maskfeature.ClearFallbackOnAll();
-                feature.ApplyAssets(listToUse, buttonIndex);
+                feature.ApplyRoomAssetsOnly(listToUse, buttonIndex);
             }
             else
             {

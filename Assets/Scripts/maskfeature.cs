@@ -129,6 +129,7 @@ public class maskfeature : MonoBehaviour
         }
     }
 
+    /// <summary>Apply room assets and play mask music. Use when the player actually puts the mask on (TurnOn).</summary>
     public void ApplyAssets(MaskUiAssetList list, int maskIndex)
     {
         lastMaskIndex = maskIndex;
@@ -137,6 +138,13 @@ public class maskfeature : MonoBehaviour
         {
             SFXController.Instance.PlayMaskMusic(list.GetMusicForMaskIndex(maskIndex));
         }
+    }
+
+    /// <summary>Update cached room assets only (no music). Use when entering a room so the mask shows the right visuals when opened later.</summary>
+    public void ApplyRoomAssetsOnly(MaskUiAssetList list, int maskIndex)
+    {
+        lastMaskIndex = maskIndex;
+        ApplyList(list);
     }
 
     public void ApplyList(MaskUiAssetList list)

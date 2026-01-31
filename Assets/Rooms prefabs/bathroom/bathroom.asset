@@ -15,6 +15,9 @@ MonoBehaviour:
   BG: {fileID: -1548837491311481067, guid: 9f5886645f538894f9c9dfed1d92f704, type: 3}
   Masks:
   - {fileID: -1548837491311481067, guid: 9f5886645f538894f9c9dfed1d92f704, type: 3}
+  - {fileID: -1548837491311481067, guid: 9f5886645f538894f9c9dfed1d92f704, type: 3}
+  - {fileID: -1548837491311481067, guid: 9f5886645f538894f9c9dfed1d92f704, type: 3}
+  - {fileID: -1548837491311481067, guid: 9f5886645f538894f9c9dfed1d92f704, type: 3}
   MaskMusic:
   - {fileID: 0}
   - {fileID: 0}
