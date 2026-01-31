@@ -1067,14 +1067,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 2100000, guid: f1fcf0cfc6b599a468a5204761677cbf, type: 2}
-  m_Color: {r: 0.21960784, g: 0.21960784, b: 0.21960784, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -269186165830448985, guid: a36db1b0176854a4f979304ed43193ae, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1108,8 +1108,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -605.65375, y: -65.731476}
-  m_SizeDelta: {x: 187.3457, y: 189.9998}
+  m_AnchoredPosition: {x: 12, y: 93}
+  m_SizeDelta: {x: 706, y: 827}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &126869256
 GameObject:
@@ -1128,7 +1128,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &126869257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1717,7 +1717,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 8119851461138827522, guid: 386770ade6f024922a3ed4d1937a8981, type: 3}
+  m_Sprite: {fileID: -5283206271807706487, guid: a7a65bb86d749aa419714b06fe5e17ff, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4133,8 +4133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0c477f172b58454a9164fbf10fef545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PrefabSwitchList
-  uiAssets: {fileID: 11400000, guid: 96aa5dc082f4b46e8bec354f119668e1, type: 2}
-  fallbackSprite: {fileID: 0}
+  uiAssets: {fileID: 0}
+  fallbackSprite: {fileID: -9164034190507988749, guid: 51d31376fb616a34ba5844e9572cc128, type: 3}
   maskFeature: {fileID: 1006269109}
   buttons: []
   riddleId: 
@@ -4233,7 +4233,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -5297680257477436801, guid: 1bead422382b84e048a4bea2b4450a5b, type: 3}
+  m_Sprite: {fileID: 8555588473267425255, guid: 333cebda831373e4d9cb7dc9b3f30669, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6152,8 +6152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0c477f172b58454a9164fbf10fef545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PrefabSwitchList
-  uiAssets: {fileID: 11400000, guid: 96aa5dc082f4b46e8bec354f119668e1, type: 2}
-  fallbackSprite: {fileID: 0}
+  uiAssets: {fileID: 11400000, guid: eebc680635c422d4690f216c0ceebc8e, type: 2}
+  fallbackSprite: {fileID: 8085828232249492908, guid: 009ff51f243e13d4c874c99f36060001, type: 3}
   maskFeature: {fileID: 1006269109}
   buttons:
   - button: {fileID: 0}
@@ -6677,126 +6677,6 @@ RectTransform:
   m_AnchoredPosition: {x: -92.5, y: 74.3}
   m_SizeDelta: {x: 91, y: 94}
   m_Pivot: {x: 0.52397364, y: 0.4854685}
---- !u!1 &1198843265
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1198843269}
-  - component: {fileID: 1198843268}
-  - component: {fileID: 1198843267}
-  - component: {fileID: 1198843266}
-  m_Layer: 5
-  m_Name: table button (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1198843266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1198843265}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1198843267}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1198843267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1198843265}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1198843268
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1198843265}
-  m_CullTransparentMesh: 1
---- !u!224 &1198843269
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1198843265}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1478708681}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 170, y: 39.385006}
-  m_SizeDelta: {x: 279.428, y: 291.867}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1212512913
 GameObject:
   m_ObjectHideFlags: 0
@@ -7247,7 +7127,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 6993625136285263185, guid: 051cdb9284102479dbf7d4233109b2af, type: 3}
+  m_Sprite: {fileID: 2672073060431684553, guid: 7fb2da075dbead846882daf1edc7b93a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7534,7 +7414,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1383578841161399136, guid: 7ccef68c1491b4232b35079ac75d1e78, type: 3}
+  m_Sprite: {fileID: -9164034190507988749, guid: 51d31376fb616a34ba5844e9572cc128, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7776,8 +7656,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0c477f172b58454a9164fbf10fef545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PrefabSwitchList
-  uiAssets: {fileID: 11400000, guid: 96aa5dc082f4b46e8bec354f119668e1, type: 2}
-  fallbackSprite: {fileID: 0}
+  uiAssets: {fileID: 11400000, guid: d354b7d30dfc82d4087d902f7ba81f58, type: 2}
+  fallbackSprite: {fileID: 8555588473267425255, guid: 333cebda831373e4d9cb7dc9b3f30669, type: 3}
   maskFeature: {fileID: 1006269109}
   buttons: []
   riddleId: 
@@ -7849,13 +7729,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0c477f172b58454a9164fbf10fef545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PrefabSwitchList
-  uiAssets: {fileID: 11400000, guid: 96aa5dc082f4b46e8bec354f119668e1, type: 2}
-  fallbackSprite: {fileID: 0}
+  uiAssets: {fileID: 0}
+  fallbackSprite: {fileID: -5283206271807706487, guid: a7a65bb86d749aa419714b06fe5e17ff, type: 3}
   maskFeature: {fileID: 1006269109}
   buttons:
-  - button: {fileID: 1198843266}
-    target: {fileID: 0}
-    uiAssetsOverride: {fileID: 0}
   - button: {fileID: 100390278}
     target: {fileID: 2053532638}
     uiAssetsOverride: {fileID: 0}
@@ -7892,7 +7769,6 @@ RectTransform:
   m_Children:
   - {fileID: 243621419}
   - {fileID: 100390281}
-  - {fileID: 1198843269}
   m_Father: {fileID: 863777471}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -7917,7 +7793,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1491503084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8356,13 +8232,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0c477f172b58454a9164fbf10fef545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PrefabSwitchList
-  uiAssets: {fileID: 11400000, guid: 96aa5dc082f4b46e8bec354f119668e1, type: 2}
-  fallbackSprite: {fileID: 0}
+  uiAssets: {fileID: 11400000, guid: 8c4be632bd61d784bb1602bf8db0135d, type: 2}
+  fallbackSprite: {fileID: 7609136138414528414, guid: 973817b40f6169541be6bc38e5d321de, type: 3}
   maskFeature: {fileID: 1006269109}
-  buttons:
-  - button: {fileID: 0}
-    target: {fileID: 0}
-    uiAssetsOverride: {fileID: 0}
+  buttons: []
   riddleId: 
   riddleButtons: []
   riddleOrder: 
@@ -8996,7 +8869,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 206490436209639387, guid: ef06728c68d9349cfab66cab03d2c454, type: 3}
+  m_Sprite: {fileID: 7609136138414528414, guid: 973817b40f6169541be6bc38e5d321de, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9404,8 +9277,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0c477f172b58454a9164fbf10fef545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PrefabSwitchList
-  uiAssets: {fileID: 11400000, guid: 96aa5dc082f4b46e8bec354f119668e1, type: 2}
-  fallbackSprite: {fileID: 0}
+  uiAssets: {fileID: 11400000, guid: 135c68151df7a4c408dbf03798ae2279, type: 2}
+  fallbackSprite: {fileID: 564626371156187149, guid: cf5b3cd85d4197144b448c56b59dc1e6, type: 3}
   maskFeature: {fileID: 1006269109}
   buttons:
   - button: {fileID: 0}
@@ -9660,7 +9533,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 9127326920837271182, guid: ad014296c368044deb72cf485869cf35, type: 3}
+  m_Sprite: {fileID: 564626371156187149, guid: cf5b3cd85d4197144b448c56b59dc1e6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10956,7 +10829,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -8169682814343152191, guid: cfcceadf7e34f4f4e94a8beada862e69, type: 3}
+  m_Sprite: {fileID: 8085828232249492908, guid: 009ff51f243e13d4c874c99f36060001, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11124,8 +10997,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0c477f172b58454a9164fbf10fef545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PrefabSwitchList
-  uiAssets: {fileID: 11400000, guid: 96aa5dc082f4b46e8bec354f119668e1, type: 2}
-  fallbackSprite: {fileID: 0}
+  uiAssets: {fileID: 0}
+  fallbackSprite: {fileID: 2672073060431684553, guid: 7fb2da075dbead846882daf1edc7b93a, type: 3}
   maskFeature: {fileID: 1006269109}
   buttons:
   - button: {fileID: 0}

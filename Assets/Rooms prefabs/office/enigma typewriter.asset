@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbd5e88e0dd315d46a13a348d29d38e6, type: 3}
+  m_Name: enigma typewriter
+  m_EditorClassIdentifier: Assembly-CSharp::MaskUiAssetList
+  BG: {fileID: 7609136138414528414, guid: 973817b40f6169541be6bc38e5d321de, type: 3}
+  Masks:
+  - {fileID: 3536239945822615906, guid: 328009b86b8a3e64e9b639601138ef60, type: 3}
+  - {fileID: -8760916351012536031, guid: 1953a49b7047090419612dfe89799273, type: 3}
+  - {fileID: 7609136138414528414, guid: 973817b40f6169541be6bc38e5d321de, type: 3}
+  - {fileID: 7609136138414528414, guid: 973817b40f6169541be6bc38e5d321de, type: 3}
+  MaskMusic: []
