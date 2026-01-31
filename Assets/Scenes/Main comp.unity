@@ -5826,7 +5826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0c477f172b58454a9164fbf10fef545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PrefabSwitchList
-  uiAssets: {fileID: 11400000, guid: fb73a04b723171741b801bac19d7729f, type: 2}
+  uiAssets: {fileID: 11400000, guid: 7b2339228ff8f4c128ce7b54eee086b4, type: 2}
   maskFeature: {fileID: 1006269109}
   buttons:
   - button: {fileID: 1205715054}

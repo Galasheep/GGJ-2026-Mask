@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cbd5e88e0dd315d46a13a348d29d38e6, type: 3}
-  m_Name: Room 1 Masks Display
+  m_Name: Room 1 Mask Display
   m_EditorClassIdentifier: Assembly-CSharp::MaskUiAssetList
   BG: {fileID: -8256224963224088408, guid: 7d8b79c1cd4354eab923df7138aafbb0, type: 3}
   Masks:
