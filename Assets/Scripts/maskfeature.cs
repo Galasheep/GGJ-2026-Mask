@@ -36,6 +36,7 @@ public class maskfeature : MonoBehaviour
     private bool buttonsHooked;
     private Coroutine disableRoutine;
     private Coroutine fadeRoutine;
+    private GameSettings gameSettings;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
     private static void InitializeAll()
@@ -65,6 +66,11 @@ public class maskfeature : MonoBehaviour
 
     private void RuntimeInitialize()
     {
+        if (gameSettings == null)
+        {
+            gameSettings = FindFirstObjectByType<GameSettings>();
+        }
+
         if (rootToToggle == null)
         {
             rootToToggle = gameObject;
@@ -122,19 +128,17 @@ public class maskfeature : MonoBehaviour
             bgImage.sprite = list.BG;
         }
 
-        if (maskImage != null && lastMaskIndex >= 0)
+        if (maskImage != null)
         {
             Sprite maskSprite = GetMaskSprite(list, lastMaskIndex);
-            if (maskSprite != null)
-            {
-                maskImage.sprite = maskSprite;
-            }
+            maskImage.sprite = maskSprite;
         }
     }
 
     public void TurnOn()
     {
         TriggerOut();
+        SyncActiveSwitchList();
         ApplyCached();
     }
 
@@ -295,6 +299,7 @@ public class maskfeature : MonoBehaviour
 
     private void ApplyCached()
     {
+        SyncActiveSwitchList();
         if (lastList == null)
         {
             return;
@@ -310,11 +315,41 @@ public class maskfeature : MonoBehaviour
             return null;
         }
 
-        if (maskIndex < 0 || maskIndex >= list.Masks.Count)
+        if (list.Masks.Count == 0)
         {
             return null;
         }
 
+        if (maskIndex < 0 || maskIndex >= list.Masks.Count)
+        {
+            return list.Masks[0];
+        }
+
         return list.Masks[maskIndex];
+    }
+
+    private void SyncActiveSwitchList()
+    {
+        if (gameSettings == null)
+        {
+            gameSettings = FindFirstObjectByType<GameSettings>();
+        }
+
+        if (gameSettings == null)
+        {
+            return;
+        }
+
+        PrefabSwitchList activeList = gameSettings.GetActiveSwitchList();
+        if (activeList == null)
+        {
+            return;
+        }
+
+        MaskUiAssetList assets = activeList.GetUiAssets();
+        if (assets != null && assets != lastList)
+        {
+            lastList = assets;
+        }
     }
 }
