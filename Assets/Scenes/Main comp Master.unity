@@ -941,13 +941,13 @@ MonoBehaviour:
   maskFeature: {fileID: 1006269109}
   buttons:
   - button: {fileID: 983665846}
-    target: {fileID: 1793815997}
+    target: {fileID: 1122307608}
     uiAssetsOverride: {fileID: 0}
   - button: {fileID: 1094605309}
     target: {fileID: 1516590695}
     uiAssetsOverride: {fileID: 0}
   - button: {fileID: 684038048}
-    target: {fileID: 1122307608}
+    target: {fileID: 1793815997}
     uiAssetsOverride: {fileID: 0}
   riddleId: 
   riddleButtons: []
