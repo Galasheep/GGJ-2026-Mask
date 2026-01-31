@@ -95,6 +95,28 @@ ScriptedImporter:
     spritePosition: {x: 0, y: 0}
   multiSpriteImportData: []
   layeredSpriteImportData:
+  - name: plaque
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 3888
+      width: 110
+      height: 83
+    spriteID: d4b6e6f13f3155d4ca20a91beb3944d4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 3888}
+    spritePosition: {x: 905, y: 540}
   - name: bathroom door
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -103,8 +125,8 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 237
-      y: 1481
+      x: 4
+      y: 3519
       width: 176
       height: 361
     spriteID: eb80f92a885206b419b4a1dcb66c908b
@@ -115,7 +137,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 237, y: 1481}
+    uvTransform: {x: 4, y: 3519}
     spritePosition: {x: 413, y: 192}
   - name: masks display
     originalName: 
@@ -126,7 +148,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 1092
+      y: 2180
       width: 729
       height: 381
     spriteID: f5af8744a450a7c40a14ecc9bf8b6334
@@ -137,7 +159,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 1092}
+    uvTransform: {x: 4, y: 2180}
     spritePosition: {x: 622, y: 98}
   - name: office door
     originalName: 
@@ -147,8 +169,8 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 421
-      y: 1481
+      x: 741
+      y: 2180
       width: 170
       height: 362
     spriteID: 3e5f874216025d64da9e6156f7178a44
@@ -159,7 +181,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 421, y: 1481}
+    uvTransform: {x: 741, y: 2180}
     spritePosition: {x: 1352, y: 198}
   - name: portrait
     originalName: 
@@ -169,8 +191,8 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 741
-      y: 1092
+      x: 4
+      y: 2569
       width: 230
       height: 574
     spriteID: fac2ee27d0244f24a83f576822866331
@@ -181,7 +203,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 741, y: 1092}
+    uvTransform: {x: 4, y: 2569}
     spritePosition: {x: 1657, y: 438}
   - name: 'plaque '
     originalName: 
@@ -192,7 +214,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 1481
+      y: 3151
       width: 225
       height: 360
     spriteID: 1d5097ca8dd86004698ba2afa0a072bd
@@ -203,7 +225,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 1481}
+    uvTransform: {x: 4, y: 3151}
     spritePosition: {x: 1627, y: 78}
   - name: Museum main room
     originalName: 
@@ -217,7 +239,7 @@ ScriptedImporter:
       y: 4
       width: 1920
       height: 1080
-    spriteID: b5b959edac6ffcd44bd10437f874f250
+    spriteID: 1804a3f7d5267c244a918dffd23b252e
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -226,6 +248,28 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
+    spritePosition: {x: 0, y: 0}
+  - name: Museum main room copy
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1092
+      width: 1920
+      height: 1080
+    spriteID: 818c63fa9db6ee240abd5211f895d2f3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1092}
     spritePosition: {x: 0, y: 0}
   spriteImportData: []
   rigSpriteImportData: []
@@ -310,13 +354,23 @@ ScriptedImporter:
   resliceFromLayer: 0
   pSDLayerImportSetting: []
   psdLayers:
+  - name: plaque
+    spriteName: plaque
+    isGroup: 0
+    parentIndex: -1
+    spriteID: d4b6e6f13f3155d4ca20a91beb3944d4
+    layerID: 12
+    mosaicPosition: {x: 4, y: 3888}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: bathroom door
     spriteName: bathroom door
     isGroup: 0
     parentIndex: -1
     spriteID: eb80f92a885206b419b4a1dcb66c908b
     layerID: 4
-    mosaicPosition: {x: 237, y: 1481}
+    mosaicPosition: {x: 4, y: 3519}
     flatten: 0
     isImported: 1
     isVisible: 1
@@ -326,7 +380,7 @@ ScriptedImporter:
     parentIndex: -1
     spriteID: f5af8744a450a7c40a14ecc9bf8b6334
     layerID: 5
-    mosaicPosition: {x: 4, y: 1092}
+    mosaicPosition: {x: 4, y: 2180}
     flatten: 0
     isImported: 1
     isVisible: 1
@@ -336,7 +390,7 @@ ScriptedImporter:
     parentIndex: -1
     spriteID: 3e5f874216025d64da9e6156f7178a44
     layerID: 6
-    mosaicPosition: {x: 421, y: 1481}
+    mosaicPosition: {x: 741, y: 2180}
     flatten: 0
     isImported: 1
     isVisible: 1
@@ -346,7 +400,7 @@ ScriptedImporter:
     parentIndex: -1
     spriteID: fac2ee27d0244f24a83f576822866331
     layerID: 7
-    mosaicPosition: {x: 741, y: 1092}
+    mosaicPosition: {x: 4, y: 2569}
     flatten: 0
     isImported: 1
     isVisible: 1
@@ -356,7 +410,7 @@ ScriptedImporter:
     parentIndex: -1
     spriteID: 1d5097ca8dd86004698ba2afa0a072bd
     layerID: 11
-    mosaicPosition: {x: 4, y: 1481}
+    mosaicPosition: {x: 4, y: 3151}
     flatten: 0
     isImported: 1
     isVisible: 1
@@ -364,9 +418,19 @@ ScriptedImporter:
     spriteName: Museum main room
     isGroup: 0
     parentIndex: -1
-    spriteID: b5b959edac6ffcd44bd10437f874f250
-    layerID: 3
+    spriteID: 1804a3f7d5267c244a918dffd23b252e
+    layerID: 16
     mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Museum main room copy
+    spriteName: Museum main room copy
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 818c63fa9db6ee240abd5211f895d2f3
+    layerID: 18
+    mosaicPosition: {x: 4, y: 1092}
     flatten: 0
     isImported: 1
     isVisible: 1
