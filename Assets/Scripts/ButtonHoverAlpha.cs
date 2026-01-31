@@ -46,11 +46,16 @@ public class ButtonHoverAlpha : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (cachedButton == null || cachedButton.interactable)
+        {
+            SFXController.Instance?.PlayHover();
+        }
         SetAlpha(hoverOnAlpha);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        SFXController.Instance?.StopHover();
         SetAlpha(hoverOffAlpha);
     }
 

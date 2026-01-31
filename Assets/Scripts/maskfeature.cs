@@ -12,6 +12,8 @@ public class maskfeature : MonoBehaviour
 
     [Header("Optional toggle buttons")]
     [SerializeField] private Button onButton;
+    [SerializeField] private Button[] onButtons;
+    [SerializeField] private int[] onButtonMaskIndices;
     [SerializeField] private Button offButton;
 
     [Header("Optional inventory animation")]
@@ -37,6 +39,10 @@ public class maskfeature : MonoBehaviour
     private Coroutine disableRoutine;
     private Coroutine fadeRoutine;
     private GameSettings gameSettings;
+    private Sprite fallbackBgSprite;
+    private Sprite fallbackMaskSprite;
+    private bool hasFallback;
+    private bool forceFallback;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
     private static void InitializeAll()
@@ -93,6 +99,21 @@ public class maskfeature : MonoBehaviour
                 onButton.onClick.AddListener(TurnOn);
             }
 
+            if (onButtons != null)
+            {
+                for (int i = 0; i < onButtons.Length; i++)
+                {
+                    Button button = onButtons[i];
+                    int maskIndex = ResolveOnButtonMaskIndex(i);
+                    if (button == null)
+                    {
+                        continue;
+                    }
+
+                    button.onClick.AddListener(() => TurnOnWithMaskIndex(maskIndex));
+                }
+            }
+
             if (offButton != null)
             {
                 offButton.onClick.AddListener(TurnOff);
@@ -112,6 +133,10 @@ public class maskfeature : MonoBehaviour
     {
         lastMaskIndex = maskIndex;
         ApplyList(list);
+        if (SFXController.Instance != null && list != null)
+        {
+            SFXController.Instance.PlayMaskMusic(list.GetMusicForMaskIndex(maskIndex));
+        }
     }
 
     public void ApplyList(MaskUiAssetList list)
@@ -120,9 +145,11 @@ public class maskfeature : MonoBehaviour
 
         if (list == null)
         {
+            ApplyFallbackSprites();
             return;
         }
 
+        forceFallback = false;
         if (bgImage != null)
         {
             bgImage.sprite = list.BG;
@@ -138,8 +165,20 @@ public class maskfeature : MonoBehaviour
     public void TurnOn()
     {
         TriggerOut();
+        if (forceFallback)
+        {
+            ApplyFallbackSprites();
+            return;
+        }
+
         SyncActiveSwitchList();
         ApplyCached();
+    }
+
+    public void TurnOnWithMaskIndex(int maskIndex)
+    {
+        lastMaskIndex = maskIndex;
+        TurnOn();
     }
 
     public void TurnOff()
@@ -165,6 +204,7 @@ public class maskfeature : MonoBehaviour
             return;
         }
 
+        SFXController.Instance?.PlayMaskRoomSwitch();
         SetActive(true);
         CancelDisable();
         StartFadeZoomIn();
@@ -181,6 +221,9 @@ public class maskfeature : MonoBehaviour
 
     public void TriggerIn()
     {
+        SFXController.Instance?.PlayMaskRemove();
+        SFXController.Instance?.StopMaskMusic();
+
         if (inventoryAnimator == null)
         {
             SetActive(false);
@@ -299,9 +342,16 @@ public class maskfeature : MonoBehaviour
 
     private void ApplyCached()
     {
+        if (forceFallback)
+        {
+            ApplyFallbackSprites();
+            return;
+        }
+
         SyncActiveSwitchList();
         if (lastList == null)
         {
+            ApplyFallbackSprites();
             return;
         }
 
@@ -330,6 +380,11 @@ public class maskfeature : MonoBehaviour
 
     private void SyncActiveSwitchList()
     {
+        if (forceFallback)
+        {
+            return;
+        }
+
         if (gameSettings == null)
         {
             gameSettings = FindFirstObjectByType<GameSettings>();
@@ -351,5 +406,100 @@ public class maskfeature : MonoBehaviour
         {
             lastList = assets;
         }
+    }
+
+    public void ApplyFallback(Sprite bgSprite, Sprite maskSprite)
+    {
+        hasFallback = true;
+        forceFallback = true;
+        fallbackBgSprite = bgSprite;
+        fallbackMaskSprite = maskSprite;
+        lastList = null;
+        ApplyFallbackSprites();
+    }
+
+    public void ClearFallback()
+    {
+        forceFallback = false;
+    }
+
+    public static void ApplyFallbackToAll(Sprite bgSprite, Sprite maskSprite)
+    {
+        maskfeature[] allFeatures = Resources.FindObjectsOfTypeAll<maskfeature>();
+        for (int i = 0; i < allFeatures.Length; i++)
+        {
+            maskfeature feature = allFeatures[i];
+            if (feature == null)
+            {
+                continue;
+            }
+
+            if (!feature.gameObject.scene.IsValid())
+            {
+                continue;
+            }
+
+            feature.ApplyFallback(bgSprite, maskSprite);
+        }
+    }
+
+    public static void ClearFallbackOnAll()
+    {
+        maskfeature[] allFeatures = Resources.FindObjectsOfTypeAll<maskfeature>();
+        for (int i = 0; i < allFeatures.Length; i++)
+        {
+            maskfeature feature = allFeatures[i];
+            if (feature == null)
+            {
+                continue;
+            }
+
+            if (!feature.gameObject.scene.IsValid())
+            {
+                continue;
+            }
+
+            feature.ClearFallback();
+        }
+    }
+
+    private void ApplyFallbackSprites()
+    {
+        if (!hasFallback)
+        {
+            if (bgImage != null)
+            {
+                bgImage.sprite = null;
+            }
+
+            if (maskImage != null)
+            {
+                maskImage.sprite = null;
+            }
+
+            return;
+        }
+
+        if (bgImage != null)
+        {
+            bgImage.sprite = fallbackBgSprite;
+        }
+
+        if (maskImage != null)
+        {
+            maskImage.sprite = fallbackMaskSprite;
+        }
+    }
+
+    private int ResolveOnButtonMaskIndex(int buttonIndex)
+    {
+        if (onButtonMaskIndices != null &&
+            buttonIndex >= 0 &&
+            buttonIndex < onButtonMaskIndices.Length)
+        {
+            return onButtonMaskIndices[buttonIndex];
+        }
+
+        return buttonIndex;
     }
 }

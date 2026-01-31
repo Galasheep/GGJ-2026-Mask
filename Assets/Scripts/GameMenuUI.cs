@@ -65,6 +65,7 @@ public class GameMenuUI : MonoBehaviour
 
     private void HandlePlayClicked()
     {
+        SFXController.Instance?.PlayUIButtonClick();
         if (fadeOnPlay && gameSettings != null)
         {
             gameSettings.FadeAndSwitch(() =>
