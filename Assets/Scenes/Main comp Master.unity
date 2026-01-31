@@ -1466,7 +1466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0c477f172b58454a9164fbf10fef545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PrefabSwitchList
-  uiAssets: {fileID: 0}
+  uiAssets: {fileID: 11400000, guid: 9daf9c08583fddd4782b78a50bbff166, type: 2}
   fallbackSprite: {fileID: -5286705378751409908, guid: 0d76ac7770bc9944d9de46d707b63bb7, type: 3}
   maskFeature: {fileID: 1006269109}
   buttons: []
@@ -2363,7 +2363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0c477f172b58454a9164fbf10fef545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PrefabSwitchList
-  uiAssets: {fileID: 11400000, guid: 96aa5dc082f4b46e8bec354f119668e1, type: 2}
+  uiAssets: {fileID: 11400000, guid: 68bc00ab11b0bab468299255a76a29fd, type: 2}
   fallbackSprite: {fileID: 0}
   maskFeature: {fileID: 1006269109}
   buttons:
@@ -3890,7 +3890,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0c477f172b58454a9164fbf10fef545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PrefabSwitchList
-  uiAssets: {fileID: 0}
+  uiAssets: {fileID: 11400000, guid: eb3c15d7676ca5b44842f79061a6ef42, type: 2}
   fallbackSprite: {fileID: -5286705378751409908, guid: 0d76ac7770bc9944d9de46d707b63bb7, type: 3}
   maskFeature: {fileID: 1006269109}
   buttons: []
@@ -4028,7 +4028,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0c477f172b58454a9164fbf10fef545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PrefabSwitchList
-  uiAssets: {fileID: 0}
+  uiAssets: {fileID: 11400000, guid: 3c9135a11fcfe394c9f55b3ae9241dda, type: 2}
   fallbackSprite: {fileID: -5286705378751409908, guid: 0d76ac7770bc9944d9de46d707b63bb7, type: 3}
   maskFeature: {fileID: 1006269109}
   buttons: []
@@ -7930,7 +7930,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0c477f172b58454a9164fbf10fef545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PrefabSwitchList
-  uiAssets: {fileID: 11400000, guid: 96aa5dc082f4b46e8bec354f119668e1, type: 2}
+  uiAssets: {fileID: 11400000, guid: 584f68c4aaf7c2f419b1649e39a9a95e, type: 2}
   fallbackSprite: {fileID: 0}
   maskFeature: {fileID: 1006269109}
   buttons:
@@ -8023,7 +8023,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0c477f172b58454a9164fbf10fef545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PrefabSwitchList
-  uiAssets: {fileID: 11400000, guid: 96aa5dc082f4b46e8bec354f119668e1, type: 2}
+  uiAssets: {fileID: 11400000, guid: 0434eddac96d1e14abebce7ba893423c, type: 2}
   fallbackSprite: {fileID: 0}
   maskFeature: {fileID: 1006269109}
   buttons: []
@@ -8880,7 +8880,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0c477f172b58454a9164fbf10fef545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PrefabSwitchList
-  uiAssets: {fileID: 11400000, guid: 9cfa13b4f4884496b952580aaf9a76df, type: 2}
+  uiAssets: {fileID: 11400000, guid: e839e9f15ddf3d94dba157401f294407, type: 2}
   fallbackSprite: {fileID: 0}
   maskFeature: {fileID: 1006269109}
   buttons:

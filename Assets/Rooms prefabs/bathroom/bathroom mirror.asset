@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbd5e88e0dd315d46a13a348d29d38e6, type: 3}
+  m_Name: bathroom mirror
+  m_EditorClassIdentifier: Assembly-CSharp::MaskUiAssetList
+  BG: {fileID: -2614120966329666260, guid: a65367f7cc244be439fc8d6d6b79bd2e, type: 3}
+  Masks:
+  - {fileID: -2614120966329666260, guid: a65367f7cc244be439fc8d6d6b79bd2e, type: 3}
+  - {fileID: -4280126307623890169, guid: 704c1a6c152cdae4ba2fe16b6ddcaa24, type: 3}
+  - {fileID: -2614120966329666260, guid: a65367f7cc244be439fc8d6d6b79bd2e, type: 3}
+  - {fileID: -2614120966329666260, guid: a65367f7cc244be439fc8d6d6b79bd2e, type: 3}
+  MaskMusic:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 57994be4810ea4b4d87638e50c386566, type: 3}
+  - {fileID: 0}
